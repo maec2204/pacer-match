@@ -59,5 +59,5 @@ Viven en `docs/proyecto/`; el vault, en `vault/`.
 - `docs/proyecto/reglas-de-sesion.md`: cómo trabaja cada sesión. **Leerlo primero.**
 - `docs/proyecto/fases.md`: las sesiones, con función, dependencias, "hecho cuando" y tiempos.
 - `docs/proyecto/plan.md`: objetivo, alcance, lo que no entra, estimado y costos del MVP.
-- `docs/proyecto/vision.md`: visión del producto real para el PO (objetivos, alcance, arquitectura, riesgos, decisiones del PO).
+- `docs/proyecto/vision.md`: visión del producto real para el PO (objetivos, alcance, arquitectura, riesgos, decisiones del PO). La copia que ve el PO es un Google Doc generado desde aquí (enlace en su frontmatter, `copia_po`).
 - `docs/proyecto/bitacora.md`: una entrada por sesión.

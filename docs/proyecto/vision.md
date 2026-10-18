@@ -5,11 +5,14 @@ version: 0.1
 actualizado: "2026-10-18"
 autor: Moisés Escudero
 mantenimiento: cuando el PO responde una decisión abierta o cambia el alcance. El plan del MVP vive en plan.md.
+copia_po: "https://docs.google.com/document/d/16gY_llUEUO-UbaJUMU7ppwtJaawN02LGoh0xwBLNlS8/edit"  # v0.1, generada con scripts/md_a_html.py; no se edita allí
 ---
-# Pacer Match — Documento de visión
+# Pacer Match: documento de visión
+
+Versión 0.1 · 18 de octubre de 2026 · Propuesta para revisión del PO · Autor: Moisés Escudero
 
 ## 1. En una línea
-Pacer Match conecta corredores que buscan compañía para una sesión concreta —mismo ritmo, distancia, hora y zona— y lo hace de forma segura: identidad verificada y punto de encuentro protegido hasta que hay match. Proponemos un MVP con infraestructura de costo casi cero (Flutter + Supabase) para mostrar tracción a inversionistas, construido sobre la misma base que usará el producto, para no tirarlo después.
+Pacer Match conecta corredores que buscan compañía para una sesión concreta (mismo ritmo, distancia, hora y zona) y lo hace de forma segura: identidad verificada y punto de encuentro protegido hasta que hay match. Proponemos un MVP con infraestructura de costo casi cero (Flutter + Supabase) para mostrar tracción a inversionistas, construido sobre la misma base que usará el producto, para no tirarlo después.
 
 ## 2. Problema y oportunidad
 - **Problema (spec del PO):** corredores que no encuentran compañeros de su mismo ritmo o distancia dentro de su club o zona.
@@ -100,7 +103,8 @@ flowchart LR
 | Push | Firebase Cloud Messaging (también entrega en iOS) | US$0 | Igual |
 | Verificación | Didit | 500 gratis/mes; luego ≈ US$0,30 c/u | Igual u otro proveedor según el país |
 | Errores | Firebase Crashlytics | US$0 | Igual |
-| Tiendas | TestFlight + prueba interna de Google Play | US$99/año Apple + US$25 único Google | Publicación pública |
+| Tienda iOS | TestFlight | US$99/año (Apple Developer) | Publicación en App Store |
+| Tienda Android | Prueba interna de Google Play | US$25, pago único | Publicación en Google Play |
 
 **Por qué este stack.** La búsqueda por radio y las rutas son consultas geográficas nativas en PostGIS. El chat sale de Realtime. Las fotos y la lógica de servidor entran en el plan gratis. El ciclo de solicitudes es relacional y se protege con reglas por fila (RLS). Flutter pinta su propia interfaz, así que se ve igual en iOS y Android.
 
@@ -110,7 +114,7 @@ flowchart LR
 
 **Costo de verificación al crecer:** (verificaciones del mes − 500) × ≈ US$0,30. Por eso se pide solo para crear o solicitar, no para explorar.
 
-## 8. Modelo de negocio (hipótesis — decide el PO, D-PO6)
+## 8. Modelo de negocio (hipótesis; decide el PO, D-PO6)
 | Modelo | Referencia del mercado | Encaje en Pacer Match |
 |---|---|---|
 | Suscripción freemium | Strava: US$79,99/año | Filtros avanzados, entrenamientos ilimitados, ver quién se interesó |

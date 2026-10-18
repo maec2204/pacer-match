@@ -38,12 +38,11 @@ Los bloques de construcción (B1…B8) se dividen en sesiones en la primera sesi
 Para arrancar cualquiera: «Sesión SN. Lee `docs/proyecto/reglas-de-sesion.md` y síguelo.»
 
 ### S0 · Iniciar el proyecto ✓ (2026-10-18)
-- **Hizo:** comentarios al spec del PO, stack del MVP y del producto, visión, plan y estas fases.
+- **Hizo:** comentarios al spec del PO, stack del MVP y del producto, visión (y su copia en Google Docs para el PO), plan y estas fases.
 
 ### S1 · Presupuesto del MVP
 - **Hace:** convierte el estimado por bloque de `plan.md` en un presupuesto para el PO: horas por bloque × tarifa de Moisés, costos de terceros, supuestos y lo que cambia el precio (diseño a medida, grupal, tracking).
-- **Heredado de S0:** compartir `vision.md` con el PO (Google Doc o PDF), junto con el presupuesto.
-- **Hecho cuando:** `docs/proyecto/presupuesto.md` existe, Moisés lo aprueba para enviar, y el PO tiene el enlace a la visión.
+- **Hecho cuando:** `docs/proyecto/presupuesto.md` existe y Moisés lo aprueba para enviar junto con la [visión v0.1](https://docs.google.com/document/d/16gY_llUEUO-UbaJUMU7ppwtJaawN02LGoh0xwBLNlS8/edit).
 
 ### S2 · Cerrar alcance con el PO
 - **Hace:** lee las respuestas del PO en los comentarios del spec y actualiza `vision.md` §12, `plan.md` y `contexto.md`. Cierra D1 (proveedor de verificación) con el mercado ya definido.
