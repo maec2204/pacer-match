@@ -45,9 +45,9 @@ Las del PO (D-PO1…D-PO11) están en `docs/proyecto/vision.md` §12. Las técni
 |---|---|---|---|
 | D1 | Proveedor de verificación de identidad | Didit (500 gratis/mes, cédula VE y CO, SDK Flutter) | S2, tras D-PO1 y D-PO4 |
 | D2 | Dónde viven las tareas | GitHub Issues del repo | S3 |
-| D3 | Gestión de estado y navegación en Flutter | Riverpod + go_router | B1 (primera sesión) |
+| D3 | Gestión de estado y navegación en Flutter | Riverpod + go_router | S5 |
 | D4 | Búsqueda de lugares al fijar el punto | Pin + dirección inversa; autocompletado solo si cabe en el cupo gratis | B3 |
-| D5 | Evitar la pausa del plan gratis de Supabase | Ping programado con GitHub Actions; Pro durante la ronda de demos | B1 |
+| D5 | Evitar la pausa del plan gratis de Supabase | Ping programado con GitHub Actions; Pro durante la ronda de demos | S7 |
 
 Cerradas:
 - 2026-10-18 · Frontend Flutter y backend Supabase Free en el MVP → ADR-0001.

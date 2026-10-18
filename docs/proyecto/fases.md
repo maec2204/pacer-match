@@ -7,10 +7,10 @@ mantenimiento: al cerrar una sesión, ajustar las siguientes solo si descubrió 
 
 Cada fase es una sesión: **una sola función, 1–2 h y un "hecho cuando" que se puede comprobar.** Si una sesión no cabe, se divide; no se alarga. Se numeran S1…SN. Si el proyecto abre otro frente, ese frente tiene su propio archivo (`fases-<frente>.md`) con su propia letra (T1…, M1…) para no chocar.
 
-Los bloques de construcción (B1…B8) se dividen en sesiones en la primera sesión de cada bloque, que agrega aquí sus filas SN con su "hecho cuando".
+Los bloques de construcción (B1…B8) se dividen en sesiones en la primera sesión de cada bloque, que agrega aquí sus filas SN con su "hecho cuando". B1 ya está dividido (S5–S8). Los números identifican la sesión, no el orden: S5–S8 pueden correr antes que S3 y S4.
 
 ## Dónde corre cada sesión
-- **Claude Code, en el clon del repo:** las que tocan código o prueban herramientas (S3 en adelante).
+- **Claude Code, en el clon del repo:** las que tocan código o prueban herramientas (S3 y de S5 en adelante).
 - **Project de claude.ai:** las de diseño, decisiones y documentos (S1, S2).
 
 ## Resumen
@@ -21,8 +21,11 @@ Los bloques de construcción (B1…B8) se dividen en sesiones en la primera sesi
 | S2 | Cerrar alcance con el PO | Visión, plan y contexto con las respuestas del PO | Respuestas del PO | D1, D-PO1/2/4/5/7/8 | 1–2 h |
 | S3 | Modelo de datos y reglas | Migración inicial + RLS + nota de dominio | S2 | D2 | 2 h |
 | S4 | Flujo de pantallas | Mapa de pantallas y navegación | S2 | — | 1–2 h |
-| B1 | Fundaciones | App Flutter base con CI, Supabase y FCM | S3 | D3, D5 | 6–10 h |
-| B2 | Registro y perfil | Auth, onboarding, perfil | B1, S4 | — | 10–16 h |
+| S5 (B1) | Esqueleto de la app | `app/` Flutter con entornos, lints, estado y navegación | S0 | D3 | 1,5–2 h |
+| S6 (B1) | Supabase | `supabase/` local + proyectos dev y prod conectados a la app | S5 | — | 1,5–2 h |
+| S7 (B1) | CI y anti-pausa | GitHub Actions (analyze, test) + ping programado | S6 | D5 | 1–1,5 h |
+| S8 (B1) | Firebase | FCM y Crashlytics configurados | S5 | — | 1,5–2 h |
+| B2 | Registro y perfil | Auth, onboarding, perfil | B1, S3, S4 | — | 10–16 h |
 | B3 | Entrenamientos | Crear con mapa y zona aproximada | B2 | D4 | 10–14 h |
 | B4 | Feed y filtros | Feed por radio, ritmo y fecha | B3 | — | 10–14 h |
 | B5 | Solicitudes y push | Ciclo de la solicitud + notificaciones | B4 | — | 12–18 h |
@@ -56,8 +59,25 @@ Para arrancar cualquiera: «Sesión SN. Lee `docs/proyecto/reglas-de-sesion.md` 
 - **Hace:** lista de pantallas, navegación, estados vacíos y de error; elige el kit de componentes (o incorpora el diseño del PO, según D-PO8).
 - **Hecho cuando:** `vault/sistema/pantallas.md` existe con el mapa de pantallas y Moisés lo aprueba.
 
-### B1 · Fundaciones
-- **Hecho cuando:** `flutter analyze` y `flutter test` pasan en CI de GitHub Actions; la app arranca en iOS y Android contra Supabase dev; Crashlytics recibe un error de prueba; el ping anti-pausa corre programado.
+### B1 · Fundaciones (S5–S8)
+No depende de las respuestas del PO: todo está decidido en ADR-0001. Se puede construir mientras S1 y S2 esperan.
+- **Hecho cuando (bloque):** `flutter analyze` y `flutter test` pasan en CI de GitHub Actions; la app arranca en iOS y Android contra Supabase dev; Crashlytics recibe un error de prueba; el ping anti-pausa corre programado.
+
+#### S5 · Esqueleto de la app
+- **Hace:** `flutter create` en `app/`; entornos dev y prod (con `--dart-define`); lints estrictos; estructura por funcionalidad; cierra D3 (estado y navegación) con un ADR.
+- **Hecho cuando:** `flutter analyze` sin avisos y `flutter test` en verde; la app abre en el simulador de iOS y en el emulador de Android y muestra el entorno activo.
+
+#### S6 · Supabase
+- **Hace:** `supabase init` en la raíz y entorno local con Docker; Moisés crea los proyectos Free dev y prod; la app se conecta con `supabase_flutter`, con claves fuera de git.
+- **Hecho cuando:** `supabase start` corre en local; la app en dev hace una consulta de prueba al proyecto dev; `git status` no muestra ningún archivo con claves.
+
+#### S7 · CI y anti-pausa
+- **Hace:** workflow de GitHub Actions con `flutter analyze` y `flutter test` en cada push y PR; workflow programado que consulta los proyectos de Supabase para que no se pausen. Antes, verificar en la documentación de Supabase qué cuenta como actividad. Cierra D5.
+- **Hecho cuando:** los dos workflows están en verde en GitHub, y el ping corrido a mano (`workflow_dispatch`) recibe respuesta 200.
+
+#### S8 · Firebase
+- **Hace:** proyecto de Firebase solo para FCM y Crashlytics; `flutterfire configure` para dev y prod. El permiso de notificaciones todavía no se pide (eso va en B5).
+- **Hecho cuando:** Crashlytics muestra un crash de prueba de Android, y la app obtiene un token de FCM en Android. iOS espera la cuenta de Apple Developer (B5).
 
 ### B2 · Registro y perfil
 - **Hecho cuando:** un usuario nuevo se registra, completa el perfil con foto y ritmo, y lo ve guardado al reabrir la app, en iOS y Android.
