@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# Obsidian: estado local de cada persona
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.trash/
+
+# Secretos locales
+*.local.env
+.env
+
+# Node
+node_modules/
