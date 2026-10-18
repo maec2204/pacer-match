@@ -2,9 +2,9 @@
 tipo: inicio
 audiencia: humano
 estado: esqueleto
-revisado: "{{fecha}}"
+revisado: "2026-10-18"
 ---
-# Vault de {{nombre-del-proyecto}}
+# Vault de Pacer Match
 
 Aquí vive lo que no debe quedarse en la cabeza de nadie: cómo funciona cada parte, qué se decidió, cuándo y por qué. Lo leen las personas (en Obsidian o en una vista web) y los agentes como contexto.
 

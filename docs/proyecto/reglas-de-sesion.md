@@ -1,4 +1,4 @@
-# Reglas de sesión — {{nombre-del-proyecto}}
+# Reglas de sesión — Pacer Match
 
 ## Al empezar
 1. Leer `docs/proyecto/contexto.md`, la fila de esta sesión en `docs/proyecto/fases.md` (con lo que dice "Heredado de…"), la tabla "Pendientes sin sesión" de ese archivo y las últimas 5 entradas de `docs/proyecto/bitacora.md`. Si el proyecto tiene más de un frente, cada uno con su archivo `fases-<frente>.md`, se lee el de la sesión.
@@ -26,3 +26,4 @@ Heredadas del Handerr Dev System.
 - 2026-10-17 [universal]: Cada fase es una sesión de 1–2 h con una sola función y un "hecho cuando" comprobable. Si no cabe, se divide; no se alarga. Una sesión no se da por cerrada si su "hecho cuando" no se cumplió.
 - 2026-10-17 [universal]: Estos documentos viven en `docs/proyecto/` del repo y se cambian con commits. El Project de claude.ai es una copia: si las dos versiones difieren, manda el repo.
 - 2026-10-18 [universal]: Un pendiente que solo vive en la bitácora o en el resumen de una sesión se pierde. Va a la fila de la sesión que lo resuelve, con su comprobación, o a "Pendientes sin sesión" (regla 9).
+- 2026-10-18 [proyecto]: Lo que se le propone al PO va como comentario en su Google Doc (sin `_` ni `*`: el conector los vuelve formato). Lo que el PO decide se escribe en el repo, en `vision.md` o en un ADR.
