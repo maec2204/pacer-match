@@ -55,16 +55,16 @@ Para arrancar cualquiera: «Sesión SN. Lee `docs/proyecto/reglas-de-sesion.md` 
 - **Hecho cuando:** `supabase db reset` aplica la migración inicial sin errores en local, un test SQL comprueba que un usuario sin match no lee el punto exacto, y existe la nota de dominio en `vault/dominios/`.
 
 ### S4 · Flujo de pantallas
-- **Hace:** lista de pantallas, navegación, estados vacíos y de error; elige el kit de componentes (o incorpora el diseño del PO, según D-PO8).
-- **Hecho cuando:** `vault/sistema/pantallas.md` existe con el mapa de pantallas y Moisés lo aprueba.
+- **Hace:** lista de pantallas, navegación, estados vacíos y de error; elige el kit de componentes (o incorpora el diseño del PO, según D-PO8). Heredado de H5 (harness): parte de la dirección visual propuesta en `DESIGN.md` y la ajusta según D-PO8.
+- **Hecho cuando:** `vault/sistema/pantallas.md` existe con el mapa de pantallas y Moisés lo aprueba; `DESIGN.md` dice si la dirección quedó aprobada por el PO o cambió.
 
 ### B1 · Fundaciones (S5–S8)
 No depende de las respuestas del PO: todo está decidido en ADR-0001. Se puede construir mientras S1 y S2 esperan.
 - **Hecho cuando (bloque):** `flutter analyze` y `flutter test` pasan en CI de GitHub Actions; la app arranca en iOS y Android contra Supabase dev; Crashlytics recibe un error de prueba; el ping anti-pausa corre programado.
 
 #### S5 · Esqueleto de la app
-- **Hace:** `flutter create` en `app/`; entornos dev y prod (con `--dart-define`); lints estrictos; estructura por funcionalidad; cierra D3 (estado y navegación) con un ADR.
-- **Hecho cuando:** `flutter analyze` sin avisos y `flutter test` en verde; la app abre en el simulador de iOS y en el emulador de Android y muestra el entorno activo.
+- **Hace:** `flutter create` en `app/`; entornos dev y prod (con `--dart-define`); lints estrictos; estructura por funcionalidad; cierra D3 (estado y navegación) con un ADR. Heredado de H5 (harness): comprobar si Archivo con eje de ancho funciona con `google_fonts` o hay que empaquetar el TTF variable (ver `DESIGN.md`).
+- **Hecho cuando:** `flutter analyze` sin avisos y `flutter test` en verde; la app abre en el simulador de iOS y en el emulador de Android y muestra el entorno activo, con una cifra en Archivo condensado (ancho 62).
 
 #### S6 · Supabase
 - **Hace:** `supabase init` en la raíz y entorno local con Docker; Moisés crea los proyectos Free dev y prod; la app se conecta con `supabase_flutter`, con claves fuera de git.
