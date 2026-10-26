@@ -10,6 +10,12 @@
 - Excepción (si la hubo): qué regla se saltó y por qué.
 -->
 
+## 2026-10-25 · H5 del harness · Dirección visual
+- Tres direcciones (Tablero, Punto de encuentro, Club) con referencias de Mobbin, en un [lienzo](https://claude.ai/artifact/Dv3Z1FRndZApA7ccc6xbbc). Moisés eligió Punto de encuentro con las cifras de Tablero, con Strava y Runbuds como referencias.
+- Queda en `DESIGN.md` como propuesta para el PO (D-PO8 sigue abierta). Sin logo ni nombre de marca hasta la búsqueda de marcas.
+- Pendientes movidos: aplicar o ajustar la dirección según D-PO8 → S4; verificar el eje de ancho de Archivo en Flutter → S5 (anotado en `DESIGN.md`).
+- Excepción (regla 2): trabajo fuera de las sesiones del plan, pedido por Moisés como piloto de la Fase 0 de diseño del harness.
+
 ## 2026-10-18 · S0 · Iniciar el proyecto
 - 16 comentarios en el [spec del PO](https://docs.google.com/document/d/1oZ5anU2qvN136UN4q90sNrJSEVbRNKRBnlcPZb9QKf0/edit): verificación de identidad, mapas, monetización, arquitectura, tiendas, seguridad del punto de encuentro y más.
 - Llenados `contexto.md`, `plan.md` (estimado 84–124 h y costos), `fases.md`, `vision.md`, glosario, `CLAUDE.md` y `README.md`.
