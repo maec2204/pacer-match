@@ -1,0 +1,165 @@
+# Plan de Pacer Match en el formato del harness (maec2204/harness-loop).
+# Fuente: docs/proyecto/fases.md. Ese archivo manda: si cambia una fila, se cambia aquí también.
+# Los "hecho cuando" son los de fases.md; el detalle de cada sesión se lee desde ahí (`lee`).
+#
+# Dos dependencias que fases.md no tiene y que el harness necesita para que no choquen dos
+# sesiones en los mismos archivos:
+#   - S3 depende de S6: la migración vive en supabase/, que crea `supabase init` en S6, y su
+#     "hecho cuando" (`supabase db reset`) necesita ese entorno local.
+#   - S8 depende de S6: las dos agregan paquetes a app/pubspec.yaml y tocan el arranque de la app.
+#
+# Los bloques B2–B9 no están aquí: cada uno entra cuando su primera sesión lo divide en
+# sesiones de 1–2 h (fases.md). B2 queda como la sesión que lo divide.
+#
+# Los estados se cambian con `harness marcar <id> <estado>`; qué sigue, con `harness siguiente`.
+proyecto: pacer-match
+
+lee_siempre:
+  - CLAUDE.md y docs/proyecto/reglas-de-sesion.md
+  - docs/proyecto/contexto.md
+  - docs/proyecto/fases.md, la fila y el detalle de esta sesión, con lo "Heredado de…"
+  - vault/00-mapa.md
+
+compartidos:
+  - ruta: docs/proyecto/bitacora.md
+    regla: Cada sesión agrega su entrada arriba, de 8 líneas como máximo (regla 10). Al integrar quedan todas, la más nueva arriba
+  - ruta: docs/proyecto/fases.md
+    regla: Cada sesión marca solo su fila y su detalle, y agrega sus pendientes a la sesión que los resuelve (regla 9)
+  - ruta: docs/proyecto/contexto.md
+    regla: Solo si cambió un hecho o se cerró una decisión, con su fila de la tabla de decisiones (regla 11)
+  - ruta: vault/decisiones/registro.md
+    regla: Cada ADR nuevo agrega su fila al final de la tabla
+  - ruta: DESIGN.md
+    regla: Cada sesión cambia solo la sección o la línea de su tema
+
+hitos:
+  - id: B1
+    nombre: "Fundaciones: analyze y test en verde en GitHub Actions, la app arranca en iOS y Android contra Supabase dev, Crashlytics recibe un error de prueba y el ping anti-pausa corre programado"
+    despues_de: [S5, S6, S7, S8]
+
+sesiones:
+  - {id: S0, titulo: "Iniciar el proyecto", funcion: "Contexto, plan, fases, visión y comentarios al spec", depende: [], toca: ["docs/proyecto/**", "vault/**", CLAUDE.md, README.md], riesgo: bajo, donde: persona, ui: false, hecho_cuando: [Lo que dice S0 en fases.md], estado: cerrada}
+  - {id: S2, titulo: "Cerrar alcance con el PO", funcion: "Visión v0.2, plan y contexto con las respuestas del PO", depende: [S0], toca: ["docs/proyecto/vision.md", docs/proyecto/plan.md, docs/proyecto/contexto.md, "vault/decisiones/**"], riesgo: bajo, donde: persona, ui: false, hecho_cuando: [Lo que dice S2 en fases.md], estado: cerrada}
+
+  - id: S1
+    titulo: Presupuesto del MVP
+    funcion: Convertir el estimado por bloque de plan.md en un presupuesto para el PO
+    depende: [S0]
+    toca: [docs/proyecto/presupuesto.md, docs/proyecto/bitacora.md, docs/proyecto/fases.md]
+    riesgo: bajo
+    donde: persona
+    ui: false
+    hecho_cuando:
+      - docs/proyecto/presupuesto.md existe y Moisés lo aprueba para enviarlo al PO
+    estado: pendiente
+    notas: Va en el Project de claude.ai (fases.md, "Dónde corre cada sesión") y necesita la tarifa de Moisés.
+
+  - id: S3
+    titulo: Modelo de datos y reglas
+    funcion: Esquema Postgres, políticas RLS y la vista que expone solo la zona aproximada antes del match
+    depende: [S2, S6]
+    toca: ["supabase/migrations/**", "supabase/tests/**", "vault/dominios/**", "vault/decisiones/**", .harness/puertas.yaml, docs/proyecto/bitacora.md, docs/proyecto/fases.md, docs/proyecto/contexto.md]
+    riesgo: alto
+    donde: auto
+    ui: false
+    hecho_cuando:
+      - "`supabase db reset` aplica la migración inicial sin errores en local"
+      - Un test SQL comprueba que un usuario sin match no lee el punto exacto
+      - Existe la nota de dominio en vault/dominios/
+      - .harness/puertas.yaml corre los tests SQL (la puerta comentada `rls`)
+    decisiones_previstas:
+      - "D2: dónde viven las tareas (propuesta: GitHub Issues del repo)"
+    lee: ["docs/proyecto/vision.md, lo que dice de seguridad y del punto de encuentro", "vault/decisiones/ADR-0004-verificacion-identidad-didit.md"]
+    estado: pendiente
+    notas: Necesita Docker corriendo en la máquina de Moisés para `supabase db reset` y `supabase test db`.
+
+  - id: S4
+    titulo: Flujo de pantallas
+    funcion: Lista de pantallas, navegación, estados vacíos y de error, y el kit de componentes
+    depende: [S2]
+    toca: ["vault/sistema/**", DESIGN.md, docs/proyecto/bitacora.md, docs/proyecto/fases.md]
+    riesgo: bajo
+    donde: persona
+    ui: false
+    hecho_cuando:
+      - vault/sistema/pantallas.md existe con el mapa de pantallas y Moisés lo aprueba
+      - DESIGN.md dice si la dirección quedó aprobada por el PO o cambió
+    lee: [DESIGN.md]
+    estado: pendiente
+    notas: Depende de lo que diga el PO sobre la dirección visual (D-PO8).
+
+  - id: S5
+    titulo: Esqueleto de la app
+    funcion: flutter create en app/, entornos dev y prod, lints estrictos, estructura por funcionalidad, estado y navegación
+    depende: [S0]
+    toca: ["app/**", "vault/decisiones/**", .harness/qa.yaml, DESIGN.md, docs/proyecto/bitacora.md, docs/proyecto/fases.md, docs/proyecto/contexto.md]
+    riesgo: medio
+    donde: auto
+    ui: true
+    hecho_cuando:
+      - "`flutter analyze` sin avisos y `flutter test` en verde, en app/"
+      - La app abre en el emulador de Android y muestra el entorno activo, con una cifra en Archivo condensado (ancho 62)
+      - DESIGN.md dice si Archivo con eje de ancho funciona con google_fonts o hay que empaquetar el TTF variable
+      - .harness/qa.yaml arranca la app con el comando de dev que elija la sesión
+    decisiones_previstas:
+      - "D3: gestión de estado y navegación (propuesta: Riverpod + go_router), con su ADR"
+    lee: [DESIGN.md, "vault/decisiones/ADR-0001-stack-mvp-flutter-supabase.md"]
+    estado: pendiente
+    notas: La parte de iOS de su "hecho cuando" (fases.md) se comprueba en la Mac al aprobar el hito B1.
+
+  - id: S6
+    titulo: Supabase
+    funcion: supabase init y entorno local; proyectos Free dev y prod conectados a la app, con las claves fuera de git
+    depende: [S5]
+    toca: ["supabase/**", "app/**", .gitignore, docs/proyecto/bitacora.md, docs/proyecto/fases.md]
+    riesgo: medio
+    donde: persona
+    ui: false
+    hecho_cuando:
+      - "`supabase start` corre en local"
+      - La app en dev hace una consulta de prueba al proyecto dev
+      - "`git status` no muestra ningún archivo con claves"
+    estado: pendiente
+    notas: Moisés crea los proyectos de Supabase con su cuenta.
+
+  - id: S7
+    titulo: CI y anti-pausa
+    funcion: GitHub Actions con flutter analyze y test, y un ping programado a Supabase
+    depende: [S6]
+    toca: [".github/**", docs/proyecto/bitacora.md, docs/proyecto/fases.md, docs/proyecto/contexto.md]
+    riesgo: bajo
+    donde: persona
+    ui: false
+    hecho_cuando:
+      - Los dos workflows están en verde en GitHub
+      - El ping corrido a mano (workflow_dispatch) recibe respuesta 200
+    decisiones_previstas:
+      - "D5: cómo evitar la pausa del plan gratis (propuesta: ping programado; Pro durante la ronda de demos)"
+    estado: pendiente
+    notas: Necesita push y los secretos del repo en GitHub.
+
+  - id: S8
+    titulo: Firebase
+    funcion: FCM y Crashlytics configurados con flutterfire para dev y prod
+    depende: [S6]
+    toca: ["app/**", firebase.json, docs/proyecto/bitacora.md, docs/proyecto/fases.md]
+    riesgo: medio
+    donde: persona
+    ui: false
+    hecho_cuando:
+      - Crashlytics muestra un crash de prueba de Android
+      - La app obtiene un token de FCM en Android
+    estado: pendiente
+    notas: Moisés crea el proyecto de Firebase con su cuenta. iOS espera la cuenta de Apple Developer (B5).
+
+  - id: B2
+    titulo: Dividir B2 (Registro y perfil)
+    funcion: Primera sesión del bloque B2, que lo divide en sesiones de 1–2 h en fases.md y en este plan
+    depende: [S3, S4, S5, S6, S7, S8]
+    toca: [.harness/plan.yaml, docs/proyecto/fases.md, docs/proyecto/bitacora.md]
+    riesgo: bajo
+    donde: persona
+    ui: false
+    hecho_cuando:
+      - fases.md y .harness/plan.yaml tienen las sesiones de B2, cada una con su "hecho cuando"
+    estado: pendiente

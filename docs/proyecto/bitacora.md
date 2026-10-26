@@ -10,6 +10,12 @@
 - Excepción (si la hubo): qué regla se saltó y por qué.
 -->
 
+## 2026-10-26 · Harness · Plan en el formato del harness
+- `.harness/`: `plan.yaml` con las sesiones de `fases.md` (S0–S8 y B2 como la que divide su bloque), política (riesgo alto en la ola, con el diff leído por Moisés antes de integrar), puertas de Flutter en `app/`, kit `flutter`, QA en Android y `contexto.md`.
+- `fases.md` manda: si cambia una fila, se cambia también en `plan.yaml`.
+- Descubierto: S3 depende de S6 (la migración vive en `supabase/`, que crea S6) y S8 de S6 (las dos tocan `app/pubspec.yaml`); quedan anotadas en `plan.yaml`. De las sesiones abiertas, solo S5 y S3 corren solas; el resto necesita cuentas o aprobaciones de Moisés.
+- Excepción (regla 2): trabajo fuera de las sesiones del plan, pedido por Moisés para correr pacer-match con el harness (H6).
+
 ## 2026-10-25 · Alcance · Dorsales en el MVP
 - La PO pidió gamificación en un comentario sobre la visión; la v0.2 la tenía en el producto v1. Moisés la pasa al MVP.
 - Diseño: dorsales coleccionables en `DESIGN.md` (PR #1) y en el prototipo [Pista viva](https://claude.ai/artifact/3WgeXhnFs91ZTeQC51YWH5).
