@@ -5,8 +5,7 @@ version: 0.2
 actualizado: "2026-10-25"
 autor: Moisés Escudero
 mantenimiento: cuando el PO responde una decisión abierta o cambia el alcance. El plan del MVP vive en plan.md.
-copia_po: "https://docs.google.com/document/d/1BLJyRg8du7J6fFNlXnUyCbm2pbpTGDvPjG3Jv4cs2Jc/edit"  # v0.2, generada con scripts/md_a_html.py; no se edita allí
-copias_anteriores: ["https://docs.google.com/document/d/16gY_llUEUO-UbaJUMU7ppwtJaawN02LGoh0xwBLNlS8/edit"]  # v0.1, con los comentarios del PO del 25-10-2026
+copia_po: "https://docs.google.com/document/d/16gY_llUEUO-UbaJUMU7ppwtJaawN02LGoh0xwBLNlS8/edit"  # un solo doc; v0.1 con md_a_html.py, v0.2 aplicada ahí como sugerencias con scripts/docs_sugerir.py
 ---
 # Pacer Match: documento de visión
 
@@ -56,8 +55,6 @@ Pacer Match conecta corredores que buscan compañía para una sesión concreta (
 | Modo visitante | Recortable | ✓ | |
 | Solicitud con mensaje, aceptar/rechazar, cancelar, expirar | ✓ | ✓ | |
 | Chat 1:1 en tiempo real + notificaciones push | ✓ | ✓ | |
-| Primer match gratis y pantalla de planes, sin cobro real | ✓ | | |
-| Cobro de la suscripción por conexiones | — | ✓ | |
 | Entrenamientos grupales y chat de grupo | — | Si se pide (D-PO2) | |
 | Reportar, bloquear y borrar cuenta (lo exigen las tiendas) | ✓ | ✓ | |
 | Revisión de reportes: una persona revisa cada reporte y decide si advierte o suspende al usuario | La hacemos nosotros desde el panel de la base de datos | Pantalla de administración propia | |
@@ -65,6 +62,8 @@ Pacer Match conecta corredores que buscan compañía para una sesión concreta (
 | Insignias y gamificación | — | ✓ | |
 | Ritmo verificado con actividades importadas | — | ✓ | |
 | Compartir el plan con un contacto de confianza | — | ✓ | |
+| Primer match gratis y pantalla de planes, sin cobro real | ✓ | | |
+| Cobro de la suscripción por conexiones | — | ✓ | |
 | Plan para clubes y entrenadores | — | — | Segunda etapa |
 | Versión web | — | Landing | App web |
 | Registro propio de recorrido y pasos (GPS) | — | — | Solo si los datos lo piden |
@@ -166,35 +165,37 @@ Para el MVP, con metas a fijar con el PO:
 ## 12. Decisiones del PO
 Las propuestas sin comentario se toman como aceptadas. Si alguna no te parece, coméntala.
 
-| # | Decisión | Estado | Respuesta o propuesta |
-|---|---|---|---|
-| D-PO1 | Mercado de lanzamiento | Decidida | Venezuela, Caracas |
-| D-PO2 | Entrenamientos 1:1 o grupales | Propuesta | 1:1 en el MVP; grupales en el producto si se piden |
-| D-PO3 | Diferencial frente a la competencia | Propuesta, a partir de tu comentario | Compañía para una sesión puntual sin pertenecer a un club, con identidad verificada |
-| D-PO4 | Verificación de identidad | Propuesta | Obligatoria para crear y solicitar, desde el MVP; cabe en el plan gratis de Didit |
-| D-PO5 | Modo visitante en el MVP | Propuesta | Recortable si falta tiempo |
-| D-PO6 | Modelo de ingresos | Decidida | Suscripción por cantidad de conexiones, primer match gratis; clubes en segunda etapa |
-| D-PO7 | Tiendas y cuentas | Abierta en parte | MVP repartido a testers (TestFlight y prueba interna de Google Play). Abierto: ¿las cuentas de Apple y Google van a nombre de una empresa (piden número D-U-N-S) o de una persona? Se necesita antes de activar las notificaciones en iPhone. |
-| D-PO8 | Diseño | Decidida | Sin diseñador: dirección visual propia con referencias de Mobbin; imágenes de una biblioteca gratuita |
-| D-PO9 | Fecha del MVP | Decidida | 5–7 semanas a ~20 h/semana desde que arranca la construcción. Si arranca esta semana: entre fin de noviembre y mediados de diciembre de 2026 |
-| D-PO10 | Nombre y marca | Abierta | Revisar marcas antes del logo |
-| D-PO11 | Login social en el MVP | Propuesta | Correo; Apple y Google si caben |
-| D-PO12 | Precios y conexiones de cada plan | Abierta | Definirlos juntos antes de la ronda, incluido a quién descuenta cada match |
+| # | Decisión | Estado y respuesta |
+|---|---|---|
+| D-PO1 | Mercado de lanzamiento (país y ciudad) | Venezuela, Caracas. |
+| D-PO2 | Entrenamientos 1:1 o grupales | Propuesta: 1:1 en el MVP; grupales en el producto si se piden |
+| D-PO3 | Diferencial frente a la competencia | Propuesta, a partir de tu comentario: compañía para una sesión puntual sin pertenecer a un club, con identidad verificada |
+| D-PO4 | Verificación: obligatoria para quién, y si entra en el MVP | Propuesta: obligatoria para crear y solicitar, desde el MVP; cabe en el plan gratis de Didit |
+| D-PO5 | Modo visitante en el MVP | Propuesta: recortable si falta tiempo |
+| D-PO6 | Modelo de ingresos | Decidida: suscripción por cantidad de conexiones, primer match gratis; clubes en segunda etapa |
+| D-PO7 | ¿El MVP se publica en tiendas o se reparte a testers? ¿Cuentas a nombre de la empresa? | Abierta en parte: el MVP se reparte a testers (TestFlight y prueba interna de Google Play). Falta saber si las cuentas de Apple y Google van a nombre de una empresa (piden número D-U-N-S) o de una persona; se necesita antes de activar las notificaciones en iPhone. |
+| D-PO8 | Diseño: ¿hay diseñador o Figma? | Decidida: sin diseñador; dirección visual propia con referencias de Mobbin e imágenes de una biblioteca gratuita |
+| D-PO9 | Fecha objetivo para la ronda | Decidida: 5–7 semanas a ~20 h/semana desde que arranca la construcción. Si arranca esta semana, entre fin de noviembre y mediados de diciembre de 2026 |
+| D-PO10 | Nombre y marca | Abierta: revisar marcas antes del logo |
+| D-PO11 | Login social en el MVP | Propuesta: correo; Apple y Google si caben |
+| D-PO12 | Precios y conexiones de cada plan | Abierta: definirlos juntos antes de la ronda, incluido a quién descuenta cada match |
 
 ## Fuentes (consultadas el 18 y el 25-10-2026)
 - Supabase, precios: https://supabase.com/pricing
 - Firebase, precios y cambio de Storage: https://firebase.google.com/pricing · https://firebase.google.com/docs/storage/faqs-storage-changes-announced-sept-2024
 - Google Maps Platform, precios: https://developers.google.com/maps/billing-and-pricing/pricing
-- Didit, plan gratis y precios: https://help.didit.me/getting-started/free-plan · https://docs.didit.me/getting-started/pricing
-- Didit, cobertura en Venezuela: https://didit.me/solutions/countries/venezuela/
+- Didit, precios y cobertura: https://docs.didit.me/getting-started/pricing · https://didit.me/solutions/countries/venezuela/ · https://didit.me/solutions/countries/colombia/
 - Apple, membresías y guías de revisión: https://developer.apple.com/support/compare-memberships/ · https://developer.apple.com/app-store/review/guidelines/
-- Apple, medios de pago por país: https://support.apple.com/111741
-- Google Play, política de pagos: https://support.google.com/googleplay/android-developer/answer/10281818
-- Google Play, países con apps de pago: https://support.google.com/googleplay/answer/143779
 - Google Play, registro y prueba cerrada: https://support.google.com/googleplay/android-developer/answer/6112435 · https://support.google.com/googleplay/android-developer/answer/14151465
 - Strava, cifras y precio: https://press.strava.com/ · https://www.strava.com/subscribe
 - Strava, pestaña de eventos: https://9to5mac.com/2026/07/09/strava-gets-an-events-tab-with-upcoming-races-group-runs-more/
+- Meetup, planes: https://help.meetup.com/hc/en-us/articles/28677808413197
+- Heylo, tarifas: https://heylo.com/help/platform-and-processing-fees
 - Competidores: https://apps.apple.com/us/app/movemates-move-together/id6748308903 · https://apps.apple.com/app/id6762994283 · https://apps.apple.com/app/id6746698548
 - Pacer Health: https://play.google.com/store/apps/details?id=cc.pacer.androidapp
+- Ley 1581/2012: https://www.saludcapital.gov.co/Normo/gsp/ley_1581_de_2012.pdf · Decreto 1377/2013: https://normas.cra.gov.co/gestor/docs/decreto_1377_2013.htm
+- Didit, plan gratis: https://help.didit.me/getting-started/free-plan
+- Apple, medios de pago por país: https://support.apple.com/111741
+- Google Play, política de pagos: https://support.google.com/googleplay/android-developer/answer/10281818
+- Google Play, países con apps de pago: https://support.google.com/googleplay/answer/143779
 - Venezuela, protección de datos: https://www.dlapiperdataprotection.com/index.html?c=VE&t=law
-- Colombia, Ley 1581/2012: https://www.saludcapital.gov.co/Normo/gsp/ley_1581_de_2012.pdf

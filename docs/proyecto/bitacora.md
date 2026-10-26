@@ -11,7 +11,7 @@
 -->
 
 ## 2026-10-25 · S2 · Cerrar alcance con el PO
-- Leídos los 16 comentarios del PO en la visión v0.1; publicada la [v0.2](https://docs.google.com/document/d/1BLJyRg8du7J6fFNlXnUyCbm2pbpTGDvPjG3Jv4cs2Jc/edit), que los responde en el texto; la v0.1 quedó renombrada como reemplazada.
+- Leídos los 16 comentarios del PO en la visión v0.1. La v0.2 se aplicó como sugerencias en el [mismo Google Doc](https://docs.google.com/document/d/16gY_llUEUO-UbaJUMU7ppwtJaawN02LGoh0xwBLNlS8/edit) (`scripts/docs_sugerir.py`), con sus comentarios intactos. Un primer intento como doc nuevo quedó marcado "[DESCARTAR]" en Drive.
 - Decisiones: mercado Venezuela, Caracas; suscripción por conexiones con primer match gratis y, en el MVP, pantalla de planes sin cobro (ADR-0005); Didit para crear y solicitar (ADR-0004); sin diseñador, con referencias de Mobbin; fecha de 5–7 semanas a ~20 h/semana.
 - Descubierto: cobrar dentro de la app exige el sistema de cada tienda, y en Venezuela Apple solo acepta tarjetas. Estimado total: 94–140 h (+4–6 h de pantalla de planes, +6–10 h de componentes visuales propios).
 - Pendientes movidos: D-PO7 (cuentas de tienda) → B5; biblioteca de imágenes → B2; D-PO12 (precios) y D6 (cobro en Venezuela) → "Pendientes sin sesión".
