@@ -12,3 +12,7 @@
 
 # Node
 node_modules/
+
+# Harness: capturas y depuración del QA
+.harness/qa/capturas/
+.harness/qa/debug/
