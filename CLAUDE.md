@@ -9,7 +9,7 @@ App móvil (Flutter + Supabase) que conecta corredores por ritmo, distancia, fec
 - `vault/`: las notas del proyecto, para personas y agentes. Se carga por capas: `vault/00-mapa.md` siempre; la nota de dominio al tocar su código; las decisiones, por búsqueda.
 - `app/` (desde B1): la app Flutter.
 - `supabase/` (desde S3): migraciones, tests SQL y Edge Functions.
-- `scripts/`: utilidades del repo. `md_a_html.py` genera la copia en Google Docs de un documento de `docs/proyecto/`.
+- `scripts/`: utilidades del repo. `md_a_html.py` crea la copia en Google Docs de un documento de `docs/proyecto/`; `docs_sugerir.py` le aplica las versiones siguientes como sugerencias.
 
 ## Qué no va
 - El spec del PO: vive en su Google Doc y se comenta allí. Lo decidido se copia aquí (`vision.md` o un ADR).

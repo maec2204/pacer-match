@@ -2,7 +2,7 @@
 tipo: glosario
 audiencia: ambos
 estado: vivo
-revisado: "2026-10-18"
+revisado: "2026-10-25"
 ---
 # Glosario
 
@@ -21,3 +21,7 @@ Término de negocio (español) ↔ identificador en el código (tal cual). Sin c
 | Match | — | Solicitud aceptada; desbloquea el chat y el punto exacto. |
 | Verificación de identidad (KYC) | — | Documento + selfie con prueba de vida, por un proveedor externo. |
 | Auth-wall | — | Bloqueo que pide registrarse (no pagar) para ver más. |
+| Conexión | — | Un match confirmado. Es la unidad que cobra la suscripción (ADR-0005). |
+| Pantalla de planes | — | Aparece al pedir el segundo match. En el MVP muestra "Próximamente" y registra "Me interesa" (ADR-0005). |
+| Intención de pago | — | Porcentaje de usuarios que tocan "Me interesa" en la pantalla de planes. Métrica del MVP. |
+| Corredor de paso | — | Corredor que está por un tiempo corto en una ciudad y busca compañía allí. |

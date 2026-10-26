@@ -18,24 +18,24 @@ Los bloques de construcción (B1…B8) se dividen en sesiones en la primera sesi
 |---|---|---|---|---|---|
 | S0 ✓ | Iniciar el proyecto | Contexto, plan, fases, visión y comentarios al spec | — | ADR-0001…0003 | 2–3 h |
 | S1 | Presupuesto del MVP | `docs/proyecto/presupuesto.md` | S0 | — | 1–2 h |
-| S2 | Cerrar alcance con el PO | Visión, plan y contexto con las respuestas del PO | Respuestas del PO | D1, D-PO1/2/4/5/7/8 | 1–2 h |
+| S2 ✓ | Cerrar alcance con el PO | Visión v0.2, plan y contexto con las respuestas del PO | Respuestas del PO | D1, D-PO1/6/8/9 | 1–2 h |
 | S3 | Modelo de datos y reglas | Migración inicial + RLS + nota de dominio | S2 | D2 | 2 h |
 | S4 | Flujo de pantallas | Mapa de pantallas y navegación | S2 | — | 1–2 h |
 | S5 (B1) | Esqueleto de la app | `app/` Flutter con entornos, lints, estado y navegación | S0 | D3 | 1,5–2 h |
 | S6 (B1) | Supabase | `supabase/` local + proyectos dev y prod conectados a la app | S5 | — | 1,5–2 h |
 | S7 (B1) | CI y anti-pausa | GitHub Actions (analyze, test) + ping programado | S6 | D5 | 1–1,5 h |
 | S8 (B1) | Firebase | FCM y Crashlytics configurados | S5 | — | 1,5–2 h |
-| B2 | Registro y perfil | Auth, onboarding, perfil | B1, S3, S4 | — | 10–16 h |
+| B2 | Registro y perfil | Auth, onboarding, perfil | B1, S3, S4 | — | 10–16 h (+ dirección visual) |
 | B3 | Entrenamientos | Crear con mapa y zona aproximada | B2 | D4 | 10–14 h |
 | B4 | Feed y filtros | Feed por radio, ritmo y fecha | B3 | — | 10–14 h |
-| B5 | Solicitudes y push | Ciclo de la solicitud + notificaciones | B4 | — | 12–18 h |
+| B5 | Solicitudes y push | Ciclo de la solicitud, notificaciones y pantalla de planes | B4 | — | 16–24 h |
 | B6 | Chat | Chat 1:1 en tiempo real | B5 | — | 8–12 h |
 | B7 | Confianza y tiendas | Verificación, reportes, bloqueo, borrado de cuenta | B5 | — | 12–18 h |
 | B8 | Demo y entrega | Builds en TestFlight y Play, métricas, datos de demo | B6, B7 | — | 10–14 h |
 
-**Total:** 84–124 h (estimado). A ~10 h/semana, 9–13 semanas.
+**Total:** 94–140 h (estimado), contando 6–10 h de componentes propios de la dirección visual repartidas en B2–B6. A ~20 h/semana, 5–7 semanas.
 
-**Orden de recorte, si falta tiempo:** 1) modo visitante, 2) login con Google y Apple (queda correo), 3) filtro por distancia y marcas 10k/21k/42k, 4) autocompletado de lugares (queda pin + dirección inversa), 5) verificación de identidad (pasa al producto y se muestra en el pitch). **No se recortan:** registro → feed → solicitud → match → chat, push, zona aproximada antes del match, reportar, bloquear y borrar cuenta (los exigen las tiendas).
+**Orden de recorte, si falta tiempo:** 1) modo visitante, 2) login con Google y Apple (queda correo), 3) autocompletado de lugares (queda pin + dirección inversa), 4) verificación de identidad (pasa al producto y se muestra en el pitch). El filtro por distancia y marcas ya salió del MVP (PO, 25-10). **No se recortan:** registro → feed → solicitud → match → chat, push, zona aproximada antes del match, pantalla de planes (es la métrica de intención de pago), reportar, bloquear y borrar cuenta (los exigen las tiendas).
 
 ## Detalle por sesión
 Para arrancar cualquiera: «Sesión SN. Lee `docs/proyecto/reglas-de-sesion.md` y síguelo.»
@@ -47,16 +47,15 @@ Para arrancar cualquiera: «Sesión SN. Lee `docs/proyecto/reglas-de-sesion.md` 
 - **Hace:** convierte el estimado por bloque de `plan.md` en un presupuesto para el PO: horas por bloque × tarifa de Moisés, costos de terceros, supuestos y lo que cambia el precio (diseño a medida, grupal, tracking).
 - **Hecho cuando:** `docs/proyecto/presupuesto.md` existe y Moisés lo aprueba para enviar junto con la [visión v0.1](https://docs.google.com/document/d/16gY_llUEUO-UbaJUMU7ppwtJaawN02LGoh0xwBLNlS8/edit).
 
-### S2 · Cerrar alcance con el PO
-- **Hace:** lee las respuestas del PO en los comentarios del spec y actualiza `vision.md` §12, `plan.md` y `contexto.md`. Cierra D1 (proveedor de verificación) con el mercado ya definido.
-- **Hecho cuando:** D-PO1, D-PO2, D-PO4, D-PO5, D-PO7 y D-PO8 tienen respuesta en `vision.md` o están en "Pendientes sin sesión" con fecha, y existe el ADR de verificación.
+### S2 · Cerrar alcance con el PO ✓ (2026-10-25)
+- **Hizo:** leyó los 16 comentarios del PO en la visión v0.1, publicó la v0.2 y cerró D1 (ADR-0004), D-PO1, D-PO6 (ADR-0005), D-PO8 y D-PO9. D-PO2, D-PO4, D-PO5 y D-PO11 quedan como propuestas aceptadas salvo objeción en la v0.2. D-PO7 (a nombre de quién van las cuentas) pasa a B5; D-PO12 (precios) y D6 (cobro en Venezuela) van a "Pendientes sin sesión".
 
 ### S3 · Modelo de datos y reglas
 - **Hace:** esquema Postgres (perfiles, entrenamientos con `geography`, solicitudes, mensajes, reportes, bloqueos, verificaciones, dispositivos), políticas RLS y la vista que expone solo la zona aproximada antes del match. Cierra D2 (dónde viven las tareas).
 - **Hecho cuando:** `supabase db reset` aplica la migración inicial sin errores en local, un test SQL comprueba que un usuario sin match no lee el punto exacto, y existe la nota de dominio en `vault/dominios/`.
 
 ### S4 · Flujo de pantallas
-- **Hace:** lista de pantallas, navegación, estados vacíos y de error; elige el kit de componentes (o incorpora el diseño del PO, según D-PO8). Heredado de H5 (harness): parte de la dirección visual propuesta en `DESIGN.md` y la ajusta según D-PO8.
+- **Hace:** lista de pantallas, navegación, estados vacíos y de error; elige el kit de componentes. Heredado de H5 (harness): parte de la dirección visual de `DESIGN.md` (no hay diseño del PO, D-PO8) y la ajusta según lo que diga el PO al verla.
 - **Hecho cuando:** `vault/sistema/pantallas.md` existe con el mapa de pantallas y Moisés lo aprueba; `DESIGN.md` dice si la dirección quedó aprobada por el PO o cambió.
 
 ### B1 · Fundaciones (S5–S8)
@@ -80,6 +79,7 @@ No depende de las respuestas del PO: todo está decidido en ADR-0001. Se puede c
 - **Hecho cuando:** Crashlytics muestra un crash de prueba de Android, y la app obtiene un token de FCM en Android. iOS espera la cuenta de Apple Developer (B5).
 
 ### B2 · Registro y perfil
+- **Heredado de S2:** elegir la biblioteca gratuita de imágenes (con licencia de uso comercial) y anotarla en `DESIGN.md`.
 - **Hecho cuando:** un usuario nuevo se registra, completa el perfil con foto y ritmo, y lo ve guardado al reabrir la app, en iOS y Android.
 
 ### B3 · Entrenamientos
@@ -89,7 +89,8 @@ No depende de las respuestas del PO: todo está decidido en ADR-0001. Se puede c
 - **Hecho cuando:** el feed devuelve solo entrenamientos dentro del radio, ritmo y fecha elegidos, con un test de la consulta sobre datos sembrados.
 
 ### B5 · Solicitudes y push
-- **Hecho cuando:** solicitud → aceptar → match llega como push a otro dispositivo; cancelar y expirar cambian el estado y avisan.
+- **Heredado de S2:** primer match gratis y pantalla de planes sin cobro real, que no bloquea y registra "Me interesa" (ADR-0005). Antes de empezar, D-PO7 resuelta con el PO y la cuenta de Apple Developer creada: sin ella no hay push en iPhone.
+- **Hecho cuando:** solicitud → aceptar → match llega como push a otro dispositivo; cancelar y expirar cambian el estado y avisan; con un match confirmado, pedir otro muestra la pantalla de planes y "Me interesa" queda registrado.
 
 ### B6 · Chat
 - **Hecho cuando:** dos dispositivos con match intercambian mensajes en tiempo real y reciben push con la app cerrada.
@@ -107,3 +108,5 @@ Lo que no tiene una sesión que lo resuelva. Al cerrar cada sesión se revisa es
 |---|---|---|
 | 2026-10-18 | Revisión legal (privacidad, biometría, términos) según el país de lanzamiento | S0 |
 | 2026-10-18 | Búsqueda de marcas para "Pacer Match" (USPTO, SIC, SAPI) | S0 |
+| 2026-10-25 | D-PO12: precios, conexiones por plan y a quién descuenta cada match, con el PO, antes de la ronda | S2 |
+| 2026-10-25 | D6: verificar si las tarjetas venezolanas funcionan en App Store y Google Play, antes de construir el cobro real | S2 |

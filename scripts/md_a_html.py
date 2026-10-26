@@ -8,9 +8,10 @@ y nunca se edita a mano. Uso:
 
 Luego se sube con Google Drive (create_file, contentMimeType text/html), que
 convierte encabezados, listas, tablas, negritas y enlaces a formato nativo.
-Drive no puede reemplazar el contenido de un doc: cada versión nueva (v0.2…) es
-un doc nuevo, y el anterior se renombra "(reemplazada por vX.Y)". El enlace
-vigente se anota en el frontmatter del .md (campo copia_po).
+Sirve solo para crear el doc la primera vez. Las versiones siguientes no crean
+otro doc: se aplican en el mismo como sugerencias con scripts/docs_sugerir.py,
+para conservar el enlace y los comentarios del PO. El enlace va en el
+frontmatter del .md (campo copia_po).
 
 Qué hace:
 - Quita el frontmatter YAML (metadatos internos del repo).
