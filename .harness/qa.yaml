@@ -1,0 +1,8 @@
+# Android en la ola. iOS se agrega cuando haya una sesión en la Mac.
+plataformas: [android]
+arrancar:
+  android: cd app && flutter run   # S5 lo cambia por el comando de dev que elija
+dispositivos:
+  - {nombre: angosto, ancho: 360, alto: 800}
+  - {nombre: prototipo, ancho: 390, alto: 844}   # el tamaño de Pista viva
+flujos_criticos: []

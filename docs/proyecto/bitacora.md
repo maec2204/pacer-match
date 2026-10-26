@@ -10,6 +10,12 @@
 - Excepción (si la hubo): qué regla se saltó y por qué.
 -->
 
+## 2026-10-26 · Harness · Plan en el formato del harness
+- `.harness/`: `plan.yaml` con las sesiones de `fases.md` (S0–S8 y B2 como la que divide su bloque), política (riesgo alto en la ola, con el diff leído por Moisés antes de integrar), puertas de Flutter en `app/`, kit `flutter`, QA en Android y `contexto.md`.
+- `fases.md` manda: si cambia una fila, se cambia también en `plan.yaml`.
+- Descubierto: S3 depende de S6 (la migración vive en `supabase/`, que crea S6) y S8 de S6 (las dos tocan `app/pubspec.yaml`); quedan anotadas en `plan.yaml`. De las sesiones abiertas, solo S5 y S3 corren solas; el resto necesita cuentas o aprobaciones de Moisés.
+- Excepción (regla 2): trabajo fuera de las sesiones del plan, pedido por Moisés para correr pacer-match con el harness (H6).
+
 ## 2026-10-25 · S2 · Cerrar alcance con el PO
 - Leídos los 16 comentarios del PO en la visión v0.1. La v0.2 se aplicó como sugerencias en el [mismo Google Doc](https://docs.google.com/document/d/16gY_llUEUO-UbaJUMU7ppwtJaawN02LGoh0xwBLNlS8/edit) (`scripts/docs_sugerir.py`), con sus comentarios intactos. Un primer intento como doc nuevo quedó marcado "[DESCARTAR]" en Drive.
 - Decisiones: mercado Venezuela, Caracas; suscripción por conexiones con primer match gratis y, en el MVP, pantalla de planes sin cobro (ADR-0005); Didit para crear y solicitar (ADR-0004); sin diseñador, con referencias de Mobbin; fecha de 5–7 semanas a ~20 h/semana.

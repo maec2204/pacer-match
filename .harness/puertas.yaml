@@ -1,0 +1,21 @@
+# La app vive en app/ (desde S5). Las puertas corren desde la raíz del repo.
+puertas:
+  - id: dependencias
+    comando: cd app && flutter pub get
+    cuando: siempre
+  - id: analyze
+    comando: cd app && flutter analyze
+    cuando: siempre
+  - id: test
+    comando: cd app && flutter test
+    cuando: siempre
+  # S3 la activa con su primer test SQL. Necesita Docker y `supabase start`.
+  # - id: rls
+  #   comando: supabase test db
+  #   cuando: siempre
+
+# Flutter los reescribe al correr `flutter pub get`: no se commitean ni frenan la ola.
+regenerados:
+  - "**/GeneratedPluginRegistrant.*"
+  - "**/generated_plugin_registrant.*"
+  - "**/generated_plugins.cmake"

@@ -1,0 +1,9 @@
+# Se hereda la política del harness. Solo cambia el riesgo alto: corre dentro de la ola con dos
+# jueces Opus, pero lo aprobado no entra a la integración hasta que Moisés lea el diff
+# (S3 es la migración con las reglas RLS del punto exacto).
+riesgos:
+  alto:
+    modo: ola
+    integra: tu
+
+# La integración parte de main (por defecto) y pasa a main en cada hito, con Moisés.
