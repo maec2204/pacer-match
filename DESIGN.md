@@ -54,7 +54,7 @@ Contraste calculado con `contraste.py` de la skill `direccion-visual` del harnes
 | Rastro de pisadas | Pisadas `volt` en zigzag sobre una línea punteada entre los dos avatares; avanzan hacia la otra persona y se borran detrás. |
 | Ficha de dato | `superficie`, cifra en Archivo de 30–44 px y etiqueta debajo (min/km, km, min aprox.). |
 | Solicitud | Avatar con placa, "identidad verificada", el mensaje como globo, "vence en N h" y Aceptar (píldora blanca) / Rechazar (contorno). |
-| Dorsal coleccionable | Gamificación: un dorsal de carrera con cuatro alfileres, número en Archivo y banda "CCS · 2026", en los colores de los avatares. Se gana corriendo con otras personas (primer match, 5 compañeros, zonas de Caracas, madrugador). Bloqueado: contorno punteado con "?". En la colección se mecen colgados de los alfileres; al ganarlo, cae, se clava y suelta confeti. |
+| Dorsal coleccionable | Gamificación: un dorsal de carrera con cuatro alfileres, número en Archivo y banda "CCS · 2026", en los colores de los avatares. Se gana corriendo con otras personas (primer match, 5 compañeros, zonas de Caracas, madrugador). Bloqueado: contorno punteado con "?". Al ganarlo, cae, se clava y suelta confeti; después, solo el dorsal nuevo se mece colgado de sus alfileres (en la colección y en el perfil) y el resto queda fijo. |
 | Plan | Tarjeta de plan por conexiones con precio y estado ("usada", "próximamente"). La pantalla aparece al pedir el segundo match, no bloquea en las pruebas y registra "Me interesa". |
 
 ## Referencias
