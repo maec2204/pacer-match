@@ -13,9 +13,22 @@
 ## 2026-10-25 · Alcance · Dorsales en el MVP
 - La PO pidió gamificación en un comentario sobre la visión; la v0.2 la tenía en el producto v1. Moisés la pasa al MVP.
 - Diseño: dorsales coleccionables en `DESIGN.md` (PR #1) y en el prototipo [Pista viva](https://claude.ai/artifact/3WgeXhnFs91ZTeQC51YWH5).
-- Nuevo bloque B9 (8–12 h, estimado) en `fases.md` y `plan.md`; el total pasa a 92–136 h.
-- Pendientes movidos: llevar la visión v0.2 del Google Doc al repo con los dorsales en el MVP → S2.
+- Nuevo bloque B9 (8–12 h, estimado) en `fases.md` y `plan.md`; sobre el estimado de S2, el total pasa a 102–152 h (6–8 semanas a ~20 h/semana).
+- Pendientes movidos: llevar al PO los dorsales en el MVP (`vision.md` §5) y la fecha de 6–8 semanas (D-PO9) → "Pendientes sin sesión" (S2 cerró antes de recibirlo).
 - Excepción (regla 2): cambio de alcance fuera de una sesión del plan, pedido por Moisés.
+
+## 2026-10-25 · S2 · Cerrar alcance con el PO
+- Leídos los 16 comentarios del PO en la visión v0.1. La v0.2 se aplicó como sugerencias en el [mismo Google Doc](https://docs.google.com/document/d/16gY_llUEUO-UbaJUMU7ppwtJaawN02LGoh0xwBLNlS8/edit) (`scripts/docs_sugerir.py`), con sus comentarios intactos. Un primer intento como doc nuevo quedó marcado "[DESCARTAR]" en Drive.
+- Decisiones: mercado Venezuela, Caracas; suscripción por conexiones con primer match gratis y, en el MVP, pantalla de planes sin cobro (ADR-0005); Didit para crear y solicitar (ADR-0004); sin diseñador, con referencias de Mobbin; fecha de 5–7 semanas a ~20 h/semana.
+- Descubierto: cobrar dentro de la app exige el sistema de cada tienda, y en Venezuela Apple solo acepta tarjetas. Estimado total: 94–140 h (+4–6 h de pantalla de planes, +6–10 h de componentes visuales propios).
+- Pendientes movidos: D-PO7 (cuentas de tienda) → B5; biblioteca de imágenes → B2; D-PO12 (precios) y D6 (cobro en Venezuela) → "Pendientes sin sesión".
+
+## 2026-10-25 · H5 del harness · Dirección visual
+- Tres direcciones estáticas en un lienzo; Moisés las rechazó por no tener vida ni parecerse a Strava y Runbuds.
+- Se rehízo como prototipo vivo, [Pista viva](https://claude.ai/artifact/3WgeXhnFs91ZTeQC51YWH5), con las pantallas del MVP: azul eléctrico, la pista en Explorar, pisadas en la espera y el punto que cae en el match. Moisés la aprobó.
+- Queda en `DESIGN.md` como propuesta para el PO (D-PO8 sigue abierta). Sin logo ni nombre de marca hasta la búsqueda de marcas.
+- Pendientes movidos: aplicar o ajustar la dirección según D-PO8 → S4; verificar el eje de ancho de Archivo en Flutter → S5.
+- Excepción (regla 2): trabajo fuera de las sesiones del plan, pedido por Moisés como piloto de la Fase 0 de diseño del harness.
 
 ## 2026-10-18 · S0 · Iniciar el proyecto
 - 16 comentarios en el [spec del PO](https://docs.google.com/document/d/1oZ5anU2qvN136UN4q90sNrJSEVbRNKRBnlcPZb9QKf0/edit): verificación de identidad, mapas, monetización, arquitectura, tiendas, seguridad del punto de encuentro y más.
