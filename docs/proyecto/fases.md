@@ -49,7 +49,7 @@ Para arrancar cualquiera: «Sesión SN. Lee `docs/proyecto/reglas-de-sesion.md` 
 - **Hecho cuando:** `docs/proyecto/presupuesto.md` existe y Moisés lo aprueba para enviar junto con la [visión v0.1](https://docs.google.com/document/d/16gY_llUEUO-UbaJUMU7ppwtJaawN02LGoh0xwBLNlS8/edit).
 
 ### S2 · Cerrar alcance con el PO
-- **Hace:** lee las respuestas del PO en los comentarios del spec y actualiza `vision.md` §12, `plan.md` y `contexto.md`. Cierra D1 (proveedor de verificación) con el mercado ya definido.
+- **Hace:** lee las respuestas del PO en los comentarios del spec y actualiza `vision.md` §12, `plan.md` y `contexto.md`. Heredado (25-10): la visión v0.2 del Google Doc pasa al repo, con los dorsales en el MVP (§5). Cierra D1 (proveedor de verificación) con el mercado ya definido.
 - **Hecho cuando:** D-PO1, D-PO2, D-PO4, D-PO5, D-PO7 y D-PO8 tienen respuesta en `vision.md` o están en "Pendientes sin sesión" con fecha, y existe el ADR de verificación.
 
 ### S3 · Modelo de datos y reglas

@@ -10,6 +10,13 @@
 - Excepción (si la hubo): qué regla se saltó y por qué.
 -->
 
+## 2026-10-25 · Alcance · Dorsales en el MVP
+- La PO pidió gamificación en un comentario sobre la visión; la v0.2 la tenía en el producto v1. Moisés la pasa al MVP.
+- Diseño: dorsales coleccionables en `DESIGN.md` (PR #1) y en el prototipo [Pista viva](https://claude.ai/artifact/3WgeXhnFs91ZTeQC51YWH5).
+- Nuevo bloque B9 (8–12 h, estimado) en `fases.md` y `plan.md`; el total pasa a 92–136 h.
+- Pendientes movidos: llevar la visión v0.2 del Google Doc al repo con los dorsales en el MVP → S2.
+- Excepción (regla 2): cambio de alcance fuera de una sesión del plan, pedido por Moisés.
+
 ## 2026-10-18 · S0 · Iniciar el proyecto
 - 16 comentarios en el [spec del PO](https://docs.google.com/document/d/1oZ5anU2qvN136UN4q90sNrJSEVbRNKRBnlcPZb9QKf0/edit): verificación de identidad, mapas, monetización, arquitectura, tiendas, seguridad del punto de encuentro y más.
 - Llenados `contexto.md`, `plan.md` (estimado 84–124 h y costos), `fases.md`, `vision.md`, glosario, `CLAUDE.md` y `README.md`.
