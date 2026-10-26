@@ -31,9 +31,10 @@ Los bloques de construcción (B1…B8) se dividen en sesiones en la primera sesi
 | B5 | Solicitudes y push | Ciclo de la solicitud + notificaciones | B4 | — | 12–18 h |
 | B6 | Chat | Chat 1:1 en tiempo real | B5 | — | 8–12 h |
 | B7 | Confianza y tiendas | Verificación, reportes, bloqueo, borrado de cuenta | B5 | — | 12–18 h |
-| B8 | Demo y entrega | Builds en TestFlight y Play, métricas, datos de demo | B6, B7 | — | 10–14 h |
+| B8 | Demo y entrega | Builds en TestFlight y Play, métricas, datos de demo | B6, B7, B9 | — | 10–14 h |
+| B9 | Dorsales (gamificación) | Dorsales coleccionables que se ganan corriendo acompañado | B5 | — | 8–12 h |
 
-**Total:** 84–124 h (estimado). A ~10 h/semana, 9–13 semanas.
+**Total:** 92–136 h (estimado). A ~10 h/semana, 10–14 semanas.
 
 **Orden de recorte, si falta tiempo:** 1) modo visitante, 2) login con Google y Apple (queda correo), 3) filtro por distancia y marcas 10k/21k/42k, 4) autocompletado de lugares (queda pin + dirección inversa), 5) verificación de identidad (pasa al producto y se muestra en el pitch). **No se recortan:** registro → feed → solicitud → match → chat, push, zona aproximada antes del match, reportar, bloquear y borrar cuenta (los exigen las tiendas).
 
@@ -96,6 +97,10 @@ No depende de las respuestas del PO: todo está decidido en ADR-0001. Se puede c
 
 ### B7 · Confianza y tiendas
 - **Hecho cuando:** sin verificación no se puede crear ni solicitar; reportar y bloquear funcionan; borrar la cuenta elimina los datos, y el enlace web de borrado responde.
+
+### B9 · Dorsales (gamificación)
+- **Hace:** pedido de la PO en un comentario sobre la visión; entra al MVP por decisión de Moisés del 25-10-2026. Dorsales coleccionables que se ganan corriendo con otras personas (primer match, número de compañeros, zonas de Caracas, especiales), la racha semanal, la colección, el momento de ganar uno y la tira en el perfil, según `DESIGN.md`. Las reglas de cada dorsal se cierran con la PO en la primera sesión del bloque.
+- **Hecho cuando:** un match confirmado otorga "Primer match" una sola vez (test sobre datos sembrados), la colección muestra ganados y bloqueados, y el momento de ganar uno se ve en iOS y Android.
 
 ### B8 · Demo y entrega
 - **Hecho cuando:** hay build en TestFlight y en la prueba interna de Google Play, la consulta de métricas devuelve datos, y está grabada la demo del flujo completo.

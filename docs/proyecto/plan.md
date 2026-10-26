@@ -17,6 +17,7 @@ Una app instalable en iOS y Android que recorra el flujo completo —registro �
 - Chat 1:1 en tiempo real y notificaciones push.
 - Reportar, bloquear y borrar cuenta (en la app y por enlace web).
 - Eventos para las métricas de la visión §11 y datos de demo.
+- Dorsales coleccionables que se ganan corriendo acompañado (gamificación pedida por la PO).
 - Distribución por TestFlight y prueba interna de Google Play.
 
 Detalle de MVP frente a producto: `vision.md` §5.
@@ -42,7 +43,8 @@ Supuestos: 1:1, kit de componentes estándar (sin diseño a medida), sin trackin
 | B6 Chat | Realtime 1:1, lista de chats, no leídos, push de mensaje | 8–12 |
 | B7 Confianza y tiendas | Didit, reportar/bloquear, borrar cuenta, privacidad y términos | 12–18 |
 | B8 Demo y entrega | Datos de demo, métricas, QA en dispositivos reales, TestFlight y Play | 10–14 |
-| **Total** | | **84–124 h** |
+| B9 Dorsales | Reglas de cada dorsal, otorgarlos al confirmar matches, colección, momento de ganar uno y tira en el perfil | 8–12 |
+| **Total** | | **92–136 h** |
 
 Ajustes (estimado): diseño a medida desde Figma +15–25%; entrenamientos grupales +12–20 h; registro básico de recorrido +16–24 h.
 
