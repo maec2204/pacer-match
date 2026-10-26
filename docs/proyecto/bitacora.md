@@ -16,6 +16,13 @@
 - Descubierto: S3 depende de S6 (la migración vive en `supabase/`, que crea S6) y S8 de S6 (las dos tocan `app/pubspec.yaml`); quedan anotadas en `plan.yaml`. De las sesiones abiertas, solo S5 y S3 corren solas; el resto necesita cuentas o aprobaciones de Moisés.
 - Excepción (regla 2): trabajo fuera de las sesiones del plan, pedido por Moisés para correr pacer-match con el harness (H6).
 
+## 2026-10-25 · Alcance · Dorsales en el MVP
+- La PO pidió gamificación en un comentario sobre la visión; la v0.2 la tenía en el producto v1. Moisés la pasa al MVP.
+- Diseño: dorsales coleccionables en `DESIGN.md` (PR #1) y en el prototipo [Pista viva](https://claude.ai/artifact/3WgeXhnFs91ZTeQC51YWH5).
+- Nuevo bloque B9 (8–12 h, estimado) en `fases.md` y `plan.md`; sobre el estimado de S2, el total pasa a 102–152 h (6–8 semanas a ~20 h/semana).
+- Pendientes movidos: llevar al PO los dorsales en el MVP (`vision.md` §5) y la fecha de 6–8 semanas (D-PO9) → "Pendientes sin sesión" (S2 cerró antes de recibirlo).
+- Excepción (regla 2): cambio de alcance fuera de una sesión del plan, pedido por Moisés.
+
 ## 2026-10-25 · S2 · Cerrar alcance con el PO
 - Leídos los 16 comentarios del PO en la visión v0.1. La v0.2 se aplicó como sugerencias en el [mismo Google Doc](https://docs.google.com/document/d/16gY_llUEUO-UbaJUMU7ppwtJaawN02LGoh0xwBLNlS8/edit) (`scripts/docs_sugerir.py`), con sus comentarios intactos. Un primer intento como doc nuevo quedó marcado "[DESCARTAR]" en Drive.
 - Decisiones: mercado Venezuela, Caracas; suscripción por conexiones con primer match gratis y, en el MVP, pantalla de planes sin cobro (ADR-0005); Didit para crear y solicitar (ADR-0004); sin diseñador, con referencias de Mobbin; fecha de 5–7 semanas a ~20 h/semana.

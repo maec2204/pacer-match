@@ -8,7 +8,7 @@ mantenimiento: cada sesión al cerrar, solo si cambió un hecho o se cerró una 
 ## Qué es
 App móvil que conecta corredores para coordinar entrenamientos puntuales según ritmo (min/km), distancia, fecha/hora y un punto de encuentro. Resuelve que un corredor no encuentre compañía de su ritmo o distancia en su club o zona. El spec es del PO y vive en un Google Doc (["App Pacer match"](https://docs.google.com/document/d/1oZ5anU2qvN136UN4q90sNrJSEVbRNKRBnlcPZb9QKf0/edit)); la versión real del producto está en `docs/proyecto/vision.md`.
 
-Objetivo inmediato: presupuestar y construir un MVP usable que el PO pueda mostrar para levantar capital. Lo elegido para el MVP es lo más rápido y económico que entrega la funcionalidad, no necesariamente lo del producto final. Fecha (D-PO9): 5–7 semanas a ~20 h/semana desde que arranca la construcción; el PO la pidió "lo antes posible".
+Objetivo inmediato: presupuestar y construir un MVP usable que el PO pueda mostrar para levantar capital. Lo elegido para el MVP es lo más rápido y económico que entrega la funcionalidad, no necesariamente lo del producto final. Fecha (D-PO9): 5–7 semanas a ~20 h/semana desde que arranca la construcción; el PO la pidió "lo antes posible". Con los dorsales (B9), el estimado sube a 6–8 semanas; falta acordarlo con el PO.
 
 ## Personas
 | Persona o rol | Qué hace en el proyecto |

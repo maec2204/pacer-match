@@ -31,9 +31,10 @@ Los bloques de construcción (B1…B8) se dividen en sesiones en la primera sesi
 | B5 | Solicitudes y push | Ciclo de la solicitud, notificaciones y pantalla de planes | B4 | — | 16–24 h |
 | B6 | Chat | Chat 1:1 en tiempo real | B5 | — | 8–12 h |
 | B7 | Confianza y tiendas | Verificación, reportes, bloqueo, borrado de cuenta | B5 | — | 12–18 h |
-| B8 | Demo y entrega | Builds en TestFlight y Play, métricas, datos de demo | B6, B7 | — | 10–14 h |
+| B8 | Demo y entrega | Builds en TestFlight y Play, métricas, datos de demo | B6, B7, B9 | — | 10–14 h |
+| B9 | Dorsales (gamificación) | Dorsales coleccionables que se ganan corriendo acompañado | B5 | — | 8–12 h |
 
-**Total:** 94–140 h (estimado), contando 6–10 h de componentes propios de la dirección visual repartidas en B2–B6. A ~20 h/semana, 5–7 semanas.
+**Total:** 102–152 h (estimado), contando 6–10 h de componentes propios de la dirección visual repartidas en B2–B6. A ~20 h/semana, 6–8 semanas.
 
 **Orden de recorte, si falta tiempo:** 1) modo visitante, 2) login con Google y Apple (queda correo), 3) autocompletado de lugares (queda pin + dirección inversa), 4) verificación de identidad (pasa al producto y se muestra en el pitch). El filtro por distancia y marcas ya salió del MVP (PO, 25-10). **No se recortan:** registro → feed → solicitud → match → chat, push, zona aproximada antes del match, pantalla de planes (es la métrica de intención de pago), reportar, bloquear y borrar cuenta (los exigen las tiendas).
 
@@ -98,6 +99,10 @@ No depende de las respuestas del PO: todo está decidido en ADR-0001. Se puede c
 ### B7 · Confianza y tiendas
 - **Hecho cuando:** sin verificación no se puede crear ni solicitar; reportar y bloquear funcionan; borrar la cuenta elimina los datos, y el enlace web de borrado responde.
 
+### B9 · Dorsales (gamificación)
+- **Hace:** pedido de la PO en un comentario sobre la visión; entra al MVP por decisión de Moisés del 25-10-2026. Dorsales coleccionables que se ganan corriendo con otras personas (primer match, número de compañeros, zonas de Caracas, especiales), la racha semanal, la colección, el momento de ganar uno y la tira en el perfil, según `DESIGN.md`. Las reglas de cada dorsal se cierran con la PO en la primera sesión del bloque.
+- **Hecho cuando:** un match confirmado otorga "Primer match" una sola vez (test sobre datos sembrados), la colección muestra ganados y bloqueados, y el momento de ganar uno se ve en iOS y Android.
+
 ### B8 · Demo y entrega
 - **Hecho cuando:** hay build en TestFlight y en la prueba interna de Google Play, la consulta de métricas devuelve datos, y está grabada la demo del flujo completo.
 
@@ -110,3 +115,4 @@ Lo que no tiene una sesión que lo resuelva. Al cerrar cada sesión se revisa es
 | 2026-10-18 | Búsqueda de marcas para "Pacer Match" (USPTO, SIC, SAPI) | S0 |
 | 2026-10-25 | D-PO12: precios, conexiones por plan y a quién descuenta cada match, con el PO, antes de la ronda | S2 |
 | 2026-10-25 | D6: verificar si las tarjetas venezolanas funcionan en App Store y Google Play, antes de construir el cobro real | S2 |
+| 2026-10-26 | Llevar al PO los dorsales en el MVP (`vision.md` §5) y la fecha de 6–8 semanas a ~20 h/semana (D-PO9), como sugerencias en el Google Doc de la visión | Dorsales en el MVP |

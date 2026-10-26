@@ -6,7 +6,7 @@ mantenimiento: cuando cambia el objetivo o el alcance. Las sesiones viven en fas
 # Plan — Pacer Match (MVP)
 
 ## Objetivo
-Una app instalable en iOS y Android que recorra el flujo completo —registro → publicar o buscar un entrenamiento → solicitud → match → chat— con push y seguridad mínima, para que el PO la muestre a inversionistas. Infraestructura ≈ US$0/mes. Fecha (D-PO9): 5–7 semanas a ~20 h/semana desde que arranca la construcción; si arranca esta semana, entre fin de noviembre y mediados de diciembre de 2026.
+Una app instalable en iOS y Android que recorra el flujo completo —registro → publicar o buscar un entrenamiento → solicitud → match → chat— con push y seguridad mínima, para que el PO la muestre a inversionistas. Infraestructura ≈ US$0/mes. Fecha (D-PO9): 5–7 semanas a ~20 h/semana desde que arranca la construcción; si arranca esta semana, entre fin de noviembre y mediados de diciembre de 2026. Con los dorsales (B9), el estimado sube a 6–8 semanas; falta acordarlo con el PO.
 
 ## Qué entra
 - Registro con correo y perfil de corredor (foto, ritmo, ciudad, 18+). Apple y Google, si caben.
@@ -19,6 +19,7 @@ Una app instalable en iOS y Android que recorra el flujo completo —registro �
 - Reportar, bloquear y borrar cuenta (en la app y por enlace web).
 - Interfaz con la dirección visual propia (`DESIGN.md`) y referencias de Mobbin; imágenes de una biblioteca gratuita.
 - Eventos para las métricas de la visión (sección 11), incluida la intención de pago, y datos de demo.
+- Dorsales coleccionables que se ganan corriendo acompañado (gamificación pedida por la PO).
 - Distribución por TestFlight y prueba interna de Google Play.
 
 Detalle de MVP frente a producto: `vision.md` §5.
@@ -46,10 +47,11 @@ Supuestos: 1:1, sin diseñador (dirección visual propia, aplicada por Moisés),
 | B6 Chat | Realtime 1:1, lista de chats, no leídos, push de mensaje | 8–12 |
 | B7 Confianza y tiendas | Didit, reportar/bloquear, borrar cuenta, privacidad y términos | 12–18 |
 | B8 Demo y entrega | Datos de demo, métricas, QA en dispositivos reales, TestFlight y Play | 10–14 |
+| B9 Dorsales | Reglas de cada dorsal, otorgarlos al confirmar matches, colección, momento de ganar uno y tira en el perfil | 8–12 |
 | Dirección visual | Componentes propios de `DESIGN.md` (zona aproximada, punto exacto, placa de ritmo, chip de fecha, cifra, barra de acción), repartidos en B2–B6 | 6–10 |
-| **Total** | | **94–140 h** |
+| **Total** | | **102–152 h** |
 
-A ~20 h/semana: 5–7 semanas. Ajustes (estimado): cobro real con Apple y Google +16–24 h; entrenamientos grupales +12–20 h; registro básico de recorrido +16–24 h.
+A ~20 h/semana: 6–8 semanas. Ajustes (estimado): cobro real con Apple y Google +16–24 h; entrenamientos grupales +12–20 h; registro básico de recorrido +16–24 h.
 
 ## Cómo se sabe que funcionó
 | Criterio | Cómo se comprueba |
