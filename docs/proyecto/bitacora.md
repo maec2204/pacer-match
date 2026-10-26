@@ -10,6 +10,13 @@
 - Excepción (si la hubo): qué regla se saltó y por qué.
 -->
 
+## 2026-10-25 · H5 del harness · Dirección visual
+- Tres direcciones estáticas en un lienzo; Moisés las rechazó por no tener vida ni parecerse a Strava y Runbuds.
+- Se rehízo como prototipo vivo, [Pista viva](https://claude.ai/artifact/3WgeXhnFs91ZTeQC51YWH5), con las pantallas del MVP: azul eléctrico, la pista en Explorar, pisadas en la espera y el punto que cae en el match. Moisés la aprobó.
+- Queda en `DESIGN.md` como propuesta para el PO (D-PO8 sigue abierta). Sin logo ni nombre de marca hasta la búsqueda de marcas.
+- Pendientes movidos: aplicar o ajustar la dirección según D-PO8 → S4; verificar el eje de ancho de Archivo en Flutter → S5.
+- Excepción (regla 2): trabajo fuera de las sesiones del plan, pedido por Moisés como piloto de la Fase 0 de diseño del harness.
+
 ## 2026-10-18 · S0 · Iniciar el proyecto
 - 16 comentarios en el [spec del PO](https://docs.google.com/document/d/1oZ5anU2qvN136UN4q90sNrJSEVbRNKRBnlcPZb9QKf0/edit): verificación de identidad, mapas, monetización, arquitectura, tiendas, seguridad del punto de encuentro y más.
 - Llenados `contexto.md`, `plan.md` (estimado 84–124 h y costos), `fases.md`, `vision.md`, glosario, `CLAUDE.md` y `README.md`.
