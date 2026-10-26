@@ -11,9 +11,10 @@
 -->
 
 ## 2026-10-25 · H5 del harness · Dirección visual
-- Tres direcciones (Tablero, Punto de encuentro, Club) con referencias de Mobbin, en un [lienzo](https://claude.ai/artifact/Dv3Z1FRndZApA7ccc6xbbc). Moisés eligió Punto de encuentro con las cifras de Tablero, con Strava y Runbuds como referencias.
+- Tres direcciones estáticas en un lienzo; Moisés las rechazó por no tener vida ni parecerse a Strava y Runbuds.
+- Se rehízo como prototipo vivo, [Pista viva](https://claude.ai/artifact/3WgeXhnFs91ZTeQC51YWH5), con las pantallas del MVP: azul eléctrico, la pista en Explorar, pisadas en la espera y el punto que cae en el match. Moisés la aprobó.
 - Queda en `DESIGN.md` como propuesta para el PO (D-PO8 sigue abierta). Sin logo ni nombre de marca hasta la búsqueda de marcas.
-- Pendientes movidos: aplicar o ajustar la dirección según D-PO8 → S4; verificar el eje de ancho de Archivo en Flutter → S5 (anotado en `DESIGN.md`).
+- Pendientes movidos: aplicar o ajustar la dirección según D-PO8 → S4; verificar el eje de ancho de Archivo en Flutter → S5.
 - Excepción (regla 2): trabajo fuera de las sesiones del plan, pedido por Moisés como piloto de la Fase 0 de diseño del harness.
 
 ## 2026-10-18 · S0 · Iniciar el proyecto
