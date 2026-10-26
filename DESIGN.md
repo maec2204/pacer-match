@@ -54,14 +54,18 @@ Contraste calculado con `contraste.py` de la skill `direccion-visual` del harnes
 | Rastro de pisadas | Pisadas `volt` en zigzag sobre una línea punteada entre los dos avatares; avanzan hacia la otra persona y se borran detrás. |
 | Ficha de dato | `superficie`, cifra en Archivo de 30–44 px y etiqueta debajo (min/km, km, min aprox.). |
 | Solicitud | Avatar con placa, "identidad verificada", el mensaje como globo, "vence en N h" y Aceptar (píldora blanca) / Rechazar (contorno). |
+| Dorsal coleccionable | Gamificación: un dorsal de carrera con cuatro alfileres, número en Archivo y banda "CCS · 2026", en los colores de los avatares. Se gana corriendo con otras personas (primer match, 5 compañeros, zonas de Caracas, madrugador). Bloqueado: contorno punteado con "?". En la colección se mecen colgados de los alfileres; al ganarlo, cae, se clava y suelta confeti. |
+| Plan | Tarjeta de plan por conexiones con precio y estado ("usada", "próximamente"). La pantalla aparece al pedir el segundo match, no bloquea en las pruebas y registra "Me interesa". |
 
 ## Referencias
 - Runbuds: color saturado de borde a borde, avatares con su cifra, cifras enormes, píldoras blancas ([inicio](https://mobbin.com/screens/04f1ba5a-db89-40fd-8057-36106113b6a4), [perfil](https://mobbin.com/screens/05b59526-2d18-4d11-9c3c-aeb218bfa1a4); 122 pantallas revisadas).
+- Any Distance, coleccionables: la colección por secciones, lo bloqueado en contorno y el momento de ganar uno con confeti, "llevarlo" en el perfil y compartirlo ([colección](https://mobbin.com/screens/c5b25b60-9ff9-47f9-9d7c-3c0dd9df2cbc), [logro](https://mobbin.com/flows/292dab84-de48-42fe-9fac-27531394fe97)).
 - Strava, eventos de club: chip de fecha, datos del evento, organizador y barra de acción fija ([detalle](https://mobbin.com/screens/f157cfb3-2d58-4acd-a8f6-994d973fb678), [lista](https://mobbin.com/screens/19cf74bc-5fc2-4e71-97bd-e1806025eeea)).
 
 ## No hacer
 - El rojo con degradado de Runbuds ni su pista como pantalla de espera: la espera usa el rastro de pisadas, propio de Pacer Match.
 - El naranja de Strava.
+- Las medallas en cápsula metálica sobre negro de Any Distance: aquí son dorsales de carrera, en el azul de la app.
 - Emojis como adorno, tarjetas con borde lateral de color, vidrio esmerilado. El degradado del fondo sí: oscurece hacia abajo para que lean la barra inferior y las acciones.
 - Mostrar la ubicación del usuario en el mapa (visión §6). La distancia "desde ti" sí se puede mostrar.
 - Pin exacto antes del match, en ninguna pantalla ni miniatura.
