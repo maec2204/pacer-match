@@ -1,12 +1,12 @@
 ---
 tipo: diseño
-estado: aprobada por Moisés el 25-10-2026; propuesta para el PO (D-PO8)
-actualizado: "2026-10-25"
-mantenimiento: cuando el PO responde D-PO8 o una sesión cambia la dirección. Las pantallas viven en vault/sistema/pantallas.md (S4).
+estado: aprobada por Moisés el 25-10-2026; se presenta al PO aparte de la visión (D-PO8 cerrada: sin diseñador)
+actualizado: "2026-10-26"
+mantenimiento: cuando el PO comenta la dirección o una sesión la cambia. Las pantallas viven en vault/sistema/pantallas.md (S4).
 ---
 # Dirección visual: Pacer Match
 
-**Aprobada por Moisés el 25-10-2026** después de rechazar tres direcciones estáticas: **"Pista viva": color eléctrico de borde a borde, los corredores se mueven a su ritmo y el ritmo es la cifra más grande.** Prototipo navegable con las pantallas del MVP: [Pista viva](https://claude.ai/artifact/3WgeXhnFs91ZTeQC51YWH5). Es la propuesta que se lleva al PO; él puede traer diseño propio (D-PO8). Sin logo ni nombre de marca hasta la búsqueda de marcas.
+**Aprobada por Moisés el 25-10-2026** después de rechazar tres direcciones estáticas: **"Pista viva": color eléctrico de borde a borde, los corredores se mueven a su ritmo y el ritmo es la cifra más grande.** Prototipo navegable con las pantallas del MVP: [Pista viva](https://claude.ai/artifact/3WgeXhnFs91ZTeQC51YWH5). Se presenta al PO aparte de la visión: no hay diseñador ni diseño del PO (D-PO8, cerrada el 25-10-2026). Sin logo ni nombre de marca hasta la búsqueda de marcas.
 
 ## Principios
 1. **Todo se mueve al ritmo de alguien.** En Explorar, cada corredor da vueltas a la pista a una velocidad que sale de su ritmo: el de 4:50 adelanta al de 6:00. En la espera, las pisadas avanzan de ti hacia la otra persona.

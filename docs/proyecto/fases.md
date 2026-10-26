@@ -55,7 +55,7 @@ Para arrancar cualquiera: «Sesión SN. Lee `docs/proyecto/reglas-de-sesion.md` 
 - **Hecho cuando:** `supabase db reset` aplica la migración inicial sin errores en local, un test SQL comprueba que un usuario sin match no lee el punto exacto, y existe la nota de dominio en `vault/dominios/`.
 
 ### S4 · Flujo de pantallas
-- **Hace:** lista de pantallas, navegación, estados vacíos y de error; elige el kit de componentes (o incorpora el diseño del PO, según D-PO8). Heredado de H5 (harness): parte de la dirección visual propuesta en `DESIGN.md` y la ajusta según D-PO8.
+- **Hace:** lista de pantallas, navegación, estados vacíos y de error; elige el kit de componentes. Heredado de H5 (harness): parte de la dirección visual de `DESIGN.md` (no hay diseño del PO, D-PO8) y la ajusta según lo que diga el PO al verla.
 - **Hecho cuando:** `vault/sistema/pantallas.md` existe con el mapa de pantallas y Moisés lo aprueba; `DESIGN.md` dice si la dirección quedó aprobada por el PO o cambió.
 
 ### B1 · Fundaciones (S5–S8)
