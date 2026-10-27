@@ -55,9 +55,9 @@ Cerradas:
 - 2026-10-18 · Frontend Flutter y backend Supabase Free en el MVP → ADR-0001.
 - 2026-10-18 · Producto en Supabase Pro, migración por piezas a AWS al escalar → ADR-0002.
 - 2026-10-18 · Registro propio de recorrido y pasos fuera del MVP; en el producto se importan actividades → ADR-0003.
-- 2026-10-26 · D3: estado con Riverpod, navegación con go_router y Archivo variable empaquetada, sin google_fonts → ADR-0006.
 - 2026-10-25 · D1: verificación con Didit, obligatoria para crear y solicitar → ADR-0004.
 - 2026-10-25 · Con el PO: mercado Venezuela, Caracas (D-PO1); ingresos por suscripción según conexiones (D-PO6) → ADR-0005; diseño sin diseñador (D-PO8); fecha de 5–7 semanas a ~20 h/semana (D-PO9). Detalle en `vision.md`, sección 12.
+- 2026-10-26 · D3: estado con Riverpod, navegación con go_router y Archivo variable empaquetada, sin google_fonts → ADR-0006.
 
 ## Documentos del proyecto
 Viven en `docs/proyecto/`; el vault, en `vault/`.
