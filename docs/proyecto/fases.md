@@ -121,7 +121,7 @@ Lo que no tiene una sesión que lo resuelva. Al cerrar cada sesión se revisa es
 | 2026-10-25 | D-PO12: precios, conexiones por plan y a quién descuenta cada match, con el PO, antes de la ronda | S2 |
 | 2026-10-25 | D6: verificar si las tarjetas venezolanas funcionan en App Store y Google Play, antes de construir el cobro real | S2 |
 | 2026-10-26 | Aplicar la visión v0.3 (dorsales en el MVP, fecha de 6–8 semanas, Didit, D-PO7, soporte D-PO13/14, hipótesis de ingresos) como sugerencias en el Google Doc de la visión con `scripts/docs_sugerir.py`, ajustada con lo que la PO diga en la reunión | Dorsales en el MVP · reunión del 26-10 |
-| 2026-10-26 | D-PO13: si la PO aprueba el buzón de soporte por Telegram (~4 h, aparte del estimado), agregarlo como bloque con su "hecho cuando" | Reunión del 26-10 |
+| 2026-10-26 | D-PO13: si la PO aprueba el soporte dentro de la app (10–14 h, aparte del estimado), cerrar con ella las opciones de cada tipo y agregarlo como bloque con su "hecho cuando" | Reunión del 26-10 |
 | 2026-10-26 | D-PO14: nombre del responsable de seguridad y reportes, y su tiempo de respuesta, antes de lanzar | Reunión del 26-10 |
 | 2026-10-26 | Contrato de mantenimiento técnico aparte (bolsa de horas mensual, sin atención a usuarios ni moderación), antes de entregar el MVP | Reunión del 26-10 |
 | 2026-10-26 | Probar la inscripción en Apple Developer con datos y tarjeta de Venezuela, antes de B5 | Reunión del 26-10 |

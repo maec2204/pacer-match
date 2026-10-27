@@ -61,7 +61,7 @@ Pacer Match conecta corredores que buscan compañía para una sesión concreta (
 | Valoraciones y reputación | — | ✓ | |
 | Dorsales coleccionables que se ganan corriendo acompañado (gamificación) | ✓ | ✓ | |
 | Fondos y avatares desbloqueables, pacers de marca | — | Si se decide (sección 8) | |
-| Buzón de soporte desde la app (D-PO13) | Propuesta, aparte del estimado | ✓ | |
+| Soporte dentro de la app: soporte, feedback, errores y seguridad (D-PO13) | Propuesta, aparte del estimado | ✓ | |
 | Ritmo verificado con actividades importadas | — | ✓ | |
 | Compartir el plan con un contacto de confianza | — | ✓ | |
 | Primer match gratis y pantalla de planes, sin cobro real | ✓ | | |
@@ -75,7 +75,7 @@ Pacer Match conecta corredores que buscan compañía para una sesión concreta (
 - **Web en el MVP.** Un solo código móvil para iOS y Android.
 - **Cobro real en el MVP.** El MVP muestra los planes y mide quién quiere pagar. El cobro con Apple y Google llega en el producto, después de resolver el riesgo de pagos en Venezuela (sección 8).
 
-**Soporte en el MVP (propuesta del 26-10, D-PO13 y D-PO14).** Los mensajes que el usuario escribe en la app llegan al instante a un grupo de Telegram de la PO y el desarrollador, y quedan guardados en la base de datos. Cuesta US$0 al mes y unas 4 horas de trabajo, aparte del estimado, sin construir un panel que hoy no hace falta. Si el volumen lo pide, en una segunda fase los tickets se gestionan desde Telegram con botones. Cada tipo de mensaje tiene un dueño:
+**Soporte en el MVP (propuesta del 26-10, D-PO13 y D-PO14).** La app tiene una sección de ayuda con un botón por tipo de mensaje: soporte, feedback, errores y seguridad. Cada botón abre una hoja que pregunta qué pasó, con opciones predeterminadas y una descripción escrita por el usuario. El mensaje llega al instante, con esa estructura (tipo, motivo, usuario, versión de la app, dispositivo y pantalla), a un grupo de Telegram de la PO y el desarrollador, y queda guardado en la base de datos. Cuesta US$0 al mes y unas 10–14 horas de trabajo (estimado), aparte del estimado del MVP, sin construir un panel que hoy no hace falta. Las opciones de cada tipo se cierran con la PO. Si el volumen lo pide, en una segunda fase los mensajes se gestionan desde Telegram con botones. Cada tipo de mensaje tiene un dueño:
 
 | Tipo | Quién responde |
 |---|---|
@@ -138,7 +138,7 @@ flowchart LR
 - **Clubes y entrenadores:** objetivo secundario, para una segunda etapa. En Venezuela los clubes ya tienen sus propios medios para emparejar ritmos.
 - **Por definir juntos (D-PO12):** precios, conexiones de cada plan y si un match descuenta una conexión a los dos corredores o solo a quien solicita. Propuesta: a los dos, porque los dos obtienen compañía.
 - **Después:** patrocinios de marcas y alianzas con tiendas de running.
-- **Hipótesis propuestas el 26-10 (las decide la PO):** extras cosméticos, como fondos y avatares que se desbloquean con logros o con la suscripción; pacers de marca en Explorar y dorsales patrocinados, siempre marcados como "Patrocinado" y sin contar como corredores cerca. Si los extras se venden sueltos, se cobran con el sistema de cada tienda y comparten el riesgo de pagos de abajo. En el MVP, a lo sumo una marca ficticia para la demo.
+- **Hipótesis propuestas el 26-10 (las decide la PO):** extras cosméticos, como fondos y avatares que se desbloquean con logros o con la suscripción. Los avatares son un pool acotado que crece por tandas, y cada corredor lleva en Explorar el que eligió. Para el MVP el arte se hace primero con IA, con una herramienta gratuita que permita uso comercial, y se afina a partir de una referencia. Las marcas aparecen en la pista de Explorar como su propio pacer, junto a los corredores reales, y en dorsales patrocinados; siempre marcadas como "Patrocinado" y sin contar como corredores cerca. Si los extras se venden sueltos, se cobran con el sistema de cada tienda y comparten el riesgo de pagos de abajo. En el MVP, a lo sumo una marca ficticia para la demo.
 
 **En el MVP.** Al pedir el segundo match aparece la pantalla de planes con "Próximamente" y un botón "Me interesa". Durante las pruebas del MVP esa pantalla no bloquea, para no cortar las métricas de uso; se registra quién quiso pagar. Esa intención de pago es una de las métricas para los inversionistas (sección 11).
 
@@ -194,7 +194,7 @@ Las propuestas sin comentario se toman como aceptadas. Si alguna no te parece, c
 | D-PO10 | Nombre y marca | Abierta: revisar marcas antes del logo |
 | D-PO11 | Login social en el MVP | Propuesta: correo; Apple y Google si caben |
 | D-PO12 | Precios y conexiones de cada plan | Abierta: definirlos juntos antes de la ronda, incluido a quién descuenta cada match |
-| D-PO13 | Buzón de soporte en el MVP | Propuesta (26-10): mensajes a un grupo de Telegram y guardados en la base de datos; ~4 h aparte del estimado, US$0/mes |
+| D-PO13 | Soporte dentro de la app en el MVP | Propuesta (26-10): sección de ayuda con hojas por tipo (opciones y descripción) que llegan estructuradas a un grupo de Telegram y se guardan en la base de datos; 10–14 h aparte del estimado, US$0/mes |
 | D-PO14 | Quién responde cada tipo de mensaje | Propuesta (26-10): la tabla de la sección 5. Falta el nombre del responsable de seguridad y su tiempo de respuesta, antes de lanzar |
 
 ## Fuentes (consultadas el 18, el 25 y el 26-10-2026)
