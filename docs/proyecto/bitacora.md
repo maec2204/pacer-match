@@ -16,6 +16,7 @@
 - Hechos: no hay empresa constituida (cuentas personales, sin D-U-N-S); tarifa de Moisés US$5/h; adelanto por lo hecho 8 h = US$40.
 - Descubierto: desde el 1-11-2026 Didit da ~30 verificaciones gratis al mes, no 500; la prueba interna de Play no exige los 12 testers (solo publicar).
 - Pendientes movidos: tarifa, adelanto e hitos → S1; dominio y Resend → B2; Google Cloud → B3; Didit → B7; regla de dorsales → B9; Play → B8; aplicar la v0.3 al Google Doc, D-PO13, D-PO14, mantenimiento, inscripción de Apple, extras de ingresos y 12 testers → "Pendientes sin sesión".
+- Soporte (D-PO13): Moisés lo amplía de un buzón (~4 h) a una sección de ayuda con hojas por tipo y mensajes estructurados (10–14 h, estimado).
 - Excepción (regla 2): trabajo fuera de las sesiones del plan, pedido por Moisés para preparar la reunión.
 
 ## 2026-10-26 · Harness · Plan en el formato del harness

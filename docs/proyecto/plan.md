@@ -33,7 +33,7 @@ Detalle de MVP frente a producto: `vision.md` §5.
 - Entrenamientos grupales — por qué: el spec describe 1:1; espera D-PO2.
 - Valoraciones, ritmo verificado, panel de administración — por qué: son del producto v1; en el MVP se modera desde Supabase.
 - Fondos y avatares desbloqueables, pacers de marca y patrocinios — por qué: son hipótesis de ingresos para el producto (`vision.md` §8), propuestas a la PO el 26-10; en el MVP, a lo sumo una marca ficticia en la demo.
-- Buzón de soporte — por qué: no estaba en el estimado; se propuso a la PO el 26-10 como línea aparte (D-PO13, abajo en Ajustes).
+- Soporte dentro de la app — por qué: no estaba en el estimado; se propuso a la PO el 26-10 como línea aparte (D-PO13, abajo en Ajustes).
 
 ## Estimado por bloque (estimado)
 Supuestos: 1:1, sin diseñador (dirección visual propia, aplicada por Moisés), sin tracking ni web, desarrollo asistido por IA.
@@ -53,7 +53,7 @@ Supuestos: 1:1, sin diseñador (dirección visual propia, aplicada por Moisés),
 | Dirección visual | Componentes propios de `DESIGN.md` (zona aproximada, punto exacto, placa de ritmo, chip de fecha, cifra, barra de acción), repartidos en B2–B6 | 6–10 |
 | **Total** | | **102–152 h** |
 
-A ~20 h/semana: 6–8 semanas. Ajustes (estimado): cobro real con Apple y Google +16–24 h; entrenamientos grupales +12–20 h; registro básico de recorrido +16–24 h; buzón de soporte por Telegram +~4 h (D-PO13, propuesto el 26-10); confirmar que los dos corrieron antes de otorgar un dorsal, por estimar si la PO lo pide.
+A ~20 h/semana: 6–8 semanas. Ajustes (estimado): cobro real con Apple y Google +16–24 h; entrenamientos grupales +12–20 h; registro básico de recorrido +16–24 h; soporte dentro de la app +10–14 h (D-PO13, propuesto el 26-10: sección de ayuda con hojas por tipo, mensajes estructurados a Telegram y a la base de datos; datos 1–2 h, envío a Telegram 2–3 h, hojas y botones 4–6 h, pruebas 2–3 h); confirmar que los dos corrieron antes de otorgar un dorsal, por estimar si la PO lo pide.
 
 ## Cómo se sabe que funcionó
 | Criterio | Cómo se comprueba |
