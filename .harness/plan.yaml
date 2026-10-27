@@ -104,7 +104,7 @@ sesiones:
     decisiones_previstas:
       - "D3: gestión de estado y navegación (propuesta: Riverpod + go_router), con su ADR"
     lee: [DESIGN.md, "vault/decisiones/ADR-0001-stack-mvp-flutter-supabase.md"]
-    estado: en_curso
+    estado: bloqueada
     notas: La parte de iOS de su "hecho cuando" (fases.md) se comprueba en la Mac al aprobar el hito B1.
 
   - id: S6
