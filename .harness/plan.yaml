@@ -101,10 +101,12 @@ sesiones:
       - La app abre en el emulador de Android y muestra el entorno activo, con una cifra en Archivo condensado (ancho 62)
       - DESIGN.md dice si Archivo con eje de ancho funciona con google_fonts o hay que empaquetar el TTF variable
       - .harness/qa.yaml arranca la app con el comando de dev que elija la sesión
-    decisiones_previstas:
-      - "D3: gestión de estado y navegación (propuesta: Riverpod + go_router), con su ADR"
+    instrucciones: |
+      Moisés decidió D3 el 2026-10-26 (opción B de la tarjeta de la ola S5): estado con Riverpod, navegación con go_router y la fuente Archivo variable empaquetada como TTF dentro de la app, sin google_fonts. Las dependencias aprobadas son flutter_riverpod y go_router, en su última versión estable; cualquier otra sigue siendo decisión suya.
+      Escribe ADR-0006, que cierra D3, y agrega su fila al registro. En DESIGN.md anota si google_fonts sirve el eje de ancho de Archivo (comprobado, no supuesto) y que la app empaqueta el TTF.
+      La sesión se retoma en la rama feature/s5-esqueleto-de-la-app, desde a4ac7ed: no rehagas lo que ya está.
     lee: [DESIGN.md, "vault/decisiones/ADR-0001-stack-mvp-flutter-supabase.md"]
-    estado: bloqueada
+    estado: pendiente
     notas: La parte de iOS de su "hecho cuando" (fases.md) se comprueba en la Mac al aprobar el hito B1.
 
   - id: S6
