@@ -10,7 +10,7 @@ afecta: [verificacion, identidad, seguridad, mvp, costos]
 reemplaza:
 reemplazada-por:
 origen: [S2]
-resumen: Didit verifica documento + selfie antes de crear o solicitar un entrenamiento; plan gratis de 500 al mes; solo se guarda el resultado.
+resumen: Didit verifica documento + selfie antes de crear o solicitar un entrenamiento; desde el 1-11-2026 el plan gratis es un crédito de US$10 al mes (~30 verificaciones); solo se guarda el resultado.
 ---
 # ADR-0004 · La verificación de identidad se hace con Didit, para crear y solicitar
 
@@ -39,7 +39,12 @@ Para decidir: se gana confianza, que es parte del diferencial; se pierde algo de
 - Integrar Didit por *workflow*, no con llamadas sueltas a la API, para que aplique el cupo gratis.
 - El resultado llega por webhook a una Edge Function, que marca al perfil como verificado.
 - Pantalla de consentimiento explícito antes de la selfie.
-- Vigilar el uso mensual: por encima de 500, cada verificación cuesta cerca de US$0,30.
+- Vigilar el uso mensual: por encima del crédito gratis, cada verificación completa cuesta US$0,33 (ver la actualización de abajo).
+
+## Actualización 2026-10-26: cambio de precios de Didit
+- Desde el 1 de noviembre de 2026, el plan gratis deja de dar 500 verificaciones al mes por función. Pasa a un crédito de US$10 al mes, que alcanza para unas 30 verificaciones completas. Sigue sin cuota mensual, tarjeta ni mínimo, y el crédito no pasa al mes siguiente. Por encima, la verificación completa cuesta US$0,33 (precio de lista sin cambios).
+- La decisión se mantiene: para la demo sobra y sigue siendo más barato que Veriff o Sumsub. Lo que cambia es el costo de un lanzamiento abierto, que hay que presupuestar.
+- Fuente: https://didit.me/blog/new-pricing-november-2026/
 
 ## Cómo se verifica: test, linter o hook (si existe)
 - Test de RLS o de función (B7): un perfil sin verificar no puede insertar un entrenamiento ni una solicitud.
