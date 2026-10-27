@@ -1,6 +1,6 @@
 ---
 tipo: contexto
-actualizado: "2026-10-25"
+actualizado: "2026-10-26"
 mantenimiento: cada sesión al cerrar, solo si cambió un hecho o se cerró una decisión. Máx. 150 líneas.
 ---
 # Contexto — Pacer Match
@@ -19,18 +19,19 @@ Objetivo inmediato: presupuestar y construir un MVP usable que el PO pueda mostr
 ## Producto y stack
 - App: **Flutter** (iOS y Android, un código). Web fuera del MVP.
 - Backend: **Supabase Free** en el MVP (Postgres + PostGIS, Auth, Storage, Realtime, Edge Functions); **Supabase Pro** en el producto, con migración por piezas a AWS si el volumen lo pide. Ver ADR-0001 y ADR-0002.
-- Mapas: Google Maps SDK (`google_maps_flutter`) sin map ID → US$0. Push: FCM. Errores: Crashlytics. Verificación de identidad: Didit, para crear y solicitar (ADR-0004).
+- Mapas: Google Maps SDK (`google_maps_flutter`) sin map ID → US$0. Push: FCM. Errores: Crashlytics. Verificación de identidad: Didit, para crear y solicitar (ADR-0004); desde el 1-11-2026 su plan gratis cubre unas 30 verificaciones al mes.
 - Mercado: Venezuela, Caracas. Español, min/km.
 - Ingresos: suscripción por conexiones con el primer match gratis; en el MVP, pantalla de planes sin cobro real (ADR-0005).
 - Diseño: sin diseñador; dirección visual propia con referencias de Mobbin (`DESIGN.md`, PR #1) e imágenes de una biblioteca gratuita.
-- Distribución del MVP: TestFlight y prueba interna de Google Play. A nombre de quién van las cuentas: abierto (D-PO7).
+- Distribución del MVP: TestFlight y prueba interna de Google Play. No hay empresa constituida (26-10): la propuesta es cuentas personales a nombre de la PO, con Moisés invitado (D-PO7, abierta).
+- Tarifa de Moisés para este PO: US$5/h. El presupuesto se arma en S1.
 - Gestor de tareas: ninguno por ahora (D2). Repo: `maec2204/pacer-match` (GitHub, privado).
 
 ## Problemas u objetivos, por prioridad
 1. Presupuesto del MVP para el PO (S1).
 2. MVP con el flujo completo: registro → publicar o buscar → solicitud → match → chat, con push, seguridad mínima y pantalla de planes.
 3. Métricas de tracción e intención de pago para la ronda (visión, sección 11).
-4. Con el PO: precios y conexiones por plan (D-PO12) y a nombre de quién van las cuentas de tienda (D-PO7).
+4. Con el PO: precios y conexiones por plan (D-PO12), cuentas de tienda (D-PO7), soporte y responsable de seguridad (D-PO13 y D-PO14).
 
 ## Principios decididos
 - Lo que no está en git no existe, ni para el agente ni para las personas.
@@ -42,7 +43,7 @@ Objetivo inmediato: presupuestar y construir un MVP usable que el PO pueda mostr
 - Al PO se le propone con comentarios en su Google Doc; lo que se decide se escribe aquí.
 
 ## Decisiones abiertas
-Las del PO (D-PO1…D-PO12) están en `docs/proyecto/vision.md`, sección 12. Las técnicas:
+Las del PO (D-PO1…D-PO14) están en `docs/proyecto/vision.md`, sección 12. Las técnicas:
 
 | # | Decisión | Propuesta por defecto | Se cierra en |
 |---|---|---|---|

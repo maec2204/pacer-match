@@ -1,6 +1,6 @@
 ---
 tipo: plan
-actualizado: "2026-10-25"
+actualizado: "2026-10-26"
 mantenimiento: cuando cambia el objetivo o el alcance. Las sesiones viven en fases.md; el producto real, en vision.md.
 ---
 # Plan — Pacer Match (MVP)
@@ -32,6 +32,8 @@ Detalle de MVP frente a producto: `vision.md` §5.
 - Plan para clubes — por qué: el PO lo dejó como objetivo secundario.
 - Entrenamientos grupales — por qué: el spec describe 1:1; espera D-PO2.
 - Valoraciones, ritmo verificado, panel de administración — por qué: son del producto v1; en el MVP se modera desde Supabase.
+- Fondos y avatares desbloqueables, pacers de marca y patrocinios — por qué: son hipótesis de ingresos para el producto (`vision.md` §8), propuestas a la PO el 26-10; en el MVP, a lo sumo una marca ficticia en la demo.
+- Soporte dentro de la app — por qué: no estaba en el estimado; se propuso a la PO el 26-10 como línea aparte (D-PO13, abajo en Ajustes).
 
 ## Estimado por bloque (estimado)
 Supuestos: 1:1, sin diseñador (dirección visual propia, aplicada por Moisés), sin tracking ni web, desarrollo asistido por IA.
@@ -51,7 +53,7 @@ Supuestos: 1:1, sin diseñador (dirección visual propia, aplicada por Moisés),
 | Dirección visual | Componentes propios de `DESIGN.md` (zona aproximada, punto exacto, placa de ritmo, chip de fecha, cifra, barra de acción), repartidos en B2–B6 | 6–10 |
 | **Total** | | **102–152 h** |
 
-A ~20 h/semana: 6–8 semanas. Ajustes (estimado): cobro real con Apple y Google +16–24 h; entrenamientos grupales +12–20 h; registro básico de recorrido +16–24 h.
+A ~20 h/semana: 6–8 semanas. Ajustes (estimado): cobro real con Apple y Google +16–24 h; entrenamientos grupales +12–20 h; registro básico de recorrido +16–24 h; soporte dentro de la app +10–14 h (D-PO13, propuesto el 26-10: sección de ayuda con hojas por tipo, mensajes estructurados a Telegram y a la base de datos; datos 1–2 h, envío a Telegram 2–3 h, hojas y botones 4–6 h, pruebas 2–3 h); confirmar que los dos corrieron antes de otorgar un dorsal, por estimar si la PO lo pide.
 
 ## Cómo se sabe que funcionó
 | Criterio | Cómo se comprueba |
@@ -65,20 +67,26 @@ A ~20 h/semana: 6–8 semanas. Ajustes (estimado): cobro real con Apple y Google
 | El PO lo aprueba | El PO acepta la demo |
 
 ## Costos
-| Concepto | Costo | Fuente |
-|---|---|---|
-| Supabase Free | US$0/mes | [supabase.com/pricing](https://supabase.com/pricing) |
-| Google Maps SDK móvil sin map ID | US$0 | [Google Maps pricing](https://developers.google.com/maps/billing-and-pricing/pricing) |
-| Geocodificación / autocompletado | US$0 hasta 10.000/mes cada uno | ídem |
-| FCM y Crashlytics | US$0 | [firebase.google.com/pricing](https://firebase.google.com/pricing) |
-| Didit | US$0 hasta 500 al mes por función, sin tarjeta ni suscripción; luego ≈ US$0,30 c/u | [help.didit.me](https://help.didit.me/getting-started/free-plan) |
-| Imágenes | US$0 (biblioteca gratuita con licencia de uso comercial) | — |
-| Apple Developer Program | US$99/año; hace falta antes de B5 (push en iPhone) y para TestFlight | [developer.apple.com](https://developer.apple.com/support/compare-memberships/) |
-| Google Play | US$25, pago único | [Play Console](https://support.google.com/googleplay/android-developer/answer/6112435) |
-| Supabase Pro durante la ronda (opcional) | US$25/mes | [supabase.com/pricing](https://supabase.com/pricing) |
-| Página de privacidad y borrado de cuenta | US$0–15/año, si se compra dominio (estimado) | — |
+Cada costo va anclado al bloque que lo necesita. Las cuentas van a nombre de la PO, con Moisés invitado; como no hay empresa constituida (26-10), son cuentas personales y no aplica el número D-U-N-S.
 
-**Total del MVP:** US$124 el primer año en cuentas + US$0/mes de infraestructura (US$25/mes si se usa Pro durante las demos). Las horas de desarrollo van en el presupuesto (S1).
+| Cuándo | Concepto | Costo | Por qué | Fuente |
+|---|---|---|---|---|
+| S6 (B1) | Supabase Free | US$0/mes | Base de datos, cuentas, fotos y chat | [supabase.com/pricing](https://supabase.com/pricing) |
+| S8 (B1) | FCM y Crashlytics | US$0 | Push y reporte de errores | [firebase.google.com/pricing](https://firebase.google.com/pricing) |
+| B2 | Dominio | ~US$10–15/año (estimado) | Remitente propio de los correos y página de privacidad y borrado. Se compra después de cerrar el nombre (D-PO10) | — |
+| B2 | Correo de registro con Resend Free | US$0 hasta 3.000/mes y 100/día | Sin SMTP propio, Supabase manda solo 2 correos de registro por hora | [resend.com/pricing](https://resend.com/pricing) · [Supabase](https://supabase.com/docs/guides/deployment/going-into-prod) |
+| B2 | Imágenes | US$0 | Biblioteca gratuita con licencia de uso comercial | — |
+| B3 | Google Maps SDK móvil sin map ID | US$0 | El mapa; la cuenta de facturación de Google Cloud pide tarjeta, con cuotas y alertas | [Google Maps pricing](https://developers.google.com/maps/billing-and-pricing/pricing) |
+| B3 | Geocodificación / autocompletado | US$0 hasta 10.000/mes cada uno | Dirección del punto de encuentro | ídem |
+| Antes de B5 | Apple Developer Program | US$99/año | Push en iPhone y TestFlight | [developer.apple.com](https://developer.apple.com/support/compare-memberships/) |
+| B7 | Didit | US$0 hasta ~30 verificaciones completas al mes; luego US$0,33 c/u | Desde el 1-11-2026 el plan gratis es un crédito de US$10 al mes (antes, 500 al mes) | [Didit, precios nuevos](https://didit.me/blog/new-pricing-november-2026/) |
+| B7 | Privacidad y términos | Variable | Las tiendas exigen el enlace; plantilla revisada o abogado (revisión legal en "Pendientes sin sesión") | — |
+| Antes de B8 | Google Play | US$25, pago único | Prueba interna para repartir el MVP. Publicar en la tienda con cuenta personal exige antes 12 testers durante 14 días seguidos (producto) | [Play Console](https://support.google.com/googleplay/android-developer/answer/14151465) |
+| Ronda de demos | Supabase Pro (opcional) | US$25/mes | Evita la pausa del plan gratis durante las demos | [supabase.com/pricing](https://supabase.com/pricing) |
+
+**Total del MVP:** unos US$134–139 el primer año en cuentas y dominio (estimado) + US$0/mes de infraestructura (US$25/mes si se usa Pro durante las demos). Aparte: la revisión legal y las verificaciones por encima del crédito de Didit. Las horas de desarrollo van en el presupuesto (S1).
+
+**Fuera de este plan (propuesto a la PO el 26-10):** el mantenimiento técnico (errores, actualizaciones, disponibilidad) va en un contrato aparte con bolsa de horas mensual, sin atención a usuarios ni moderación.
 
 ## Después
 Producto v1 según `vision.md`: Supabase Pro, login social completo, cobro de la suscripción por conexiones, valoraciones, insignias, ritmo verificado con actividades importadas, compartir el plan, panel de moderación y publicación en tiendas.

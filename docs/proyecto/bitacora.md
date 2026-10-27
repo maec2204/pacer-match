@@ -16,6 +16,15 @@
 - Descubierto: `google_fonts` 9.0.0 no sirve el eje de ancho de Archivo (comprobado en su código); `DESIGN.md` lo dice. Visto en el emulador Android API 36.
 - Pendientes movidos: simulador de iOS → ola de cierre de B1 (necesita la Mac); Outfit empaquetada → sesión del tema (B2).
 
+## 2026-10-26 · Reunión con el PO · Lo preparado para la presentación
+- Presentación de la reunión (Slides, claude.ai): avance, adelanto, fases, costos de terceros, soporte, dorsales y nuevas ideas de ingresos.
+- `plan.md`: costos anclados a cada bloque (dominio, Resend, Google Cloud, Apple antes de B5, Play antes de B8); fondos, avatares, patrocinios y buzón de soporte fuera del estimado. `vision.md` pasa a borrador v0.3 (D-PO7, D-PO13, D-PO14, hipótesis de ingresos en §8). ADR-0004 con el precio nuevo de Didit.
+- Hechos: no hay empresa constituida (cuentas personales, sin D-U-N-S); tarifa de Moisés US$5/h; adelanto por lo hecho 8 h = US$40.
+- Descubierto: desde el 1-11-2026 Didit da ~30 verificaciones gratis al mes, no 500; la prueba interna de Play no exige los 12 testers (solo publicar).
+- Pendientes movidos: tarifa, adelanto e hitos → S1; dominio y Resend → B2; Google Cloud → B3; Didit → B7; regla de dorsales → B9; Play → B8; aplicar la v0.3 al Google Doc, D-PO13, D-PO14, mantenimiento, inscripción de Apple, extras de ingresos y 12 testers → "Pendientes sin sesión".
+- Soporte (D-PO13): Moisés lo amplía de un buzón (~4 h) a una sección de ayuda con hojas por tipo y mensajes estructurados (10–14 h, estimado).
+- Excepción (regla 2): trabajo fuera de las sesiones del plan, pedido por Moisés para preparar la reunión.
+
 ## 2026-10-26 · Harness · Plan en el formato del harness
 - `.harness/`: `plan.yaml` con las sesiones de `fases.md` (S0–S8 y B2 como la que divide su bloque), política (riesgo alto en la ola, con el diff leído por Moisés antes de integrar), puertas de Flutter en `app/`, kit `flutter`, QA en Android y `contexto.md`.
 - `fases.md` manda: si cambia una fila, se cambia también en `plan.yaml`.
