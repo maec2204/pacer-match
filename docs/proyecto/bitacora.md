@@ -10,6 +10,12 @@
 - Excepción (si la hubo): qué regla se saltó y por qué.
 -->
 
+## 2026-10-26 · S5 · Esqueleto de la app
+- `app/`: Flutter (Android e iOS, org `com.pacermatch`), entornos dev/prod con `--dart-define=ENTORNO`, lints estrictos, estructura por funcionalidad, Riverpod y go_router; pantalla provisional con el entorno y una cifra en Archivo ancho 62.
+- Decisión cerrada: D3 → [ADR-0006](../../vault/decisiones/ADR-0006-estado-navegacion-y-fuente-archivo.md) (Riverpod, go_router, Archivo variable empaquetada, sin google_fonts).
+- Descubierto: `google_fonts` 9.0.0 no sirve el eje de ancho de Archivo (comprobado en su código); `DESIGN.md` lo dice. Visto en el emulador Android API 36.
+- Pendientes movidos: simulador de iOS → ola de cierre de B1 (necesita la Mac); Outfit empaquetada → sesión del tema (B2).
+
 ## 2026-10-26 · Harness · Plan en el formato del harness
 - `.harness/`: `plan.yaml` con las sesiones de `fases.md` (S0–S8 y B2 como la que divide su bloque), política (riesgo alto en la ola, con el diff leído por Moisés antes de integrar), puertas de Flutter en `app/`, kit `flutter`, QA en Android y `contexto.md`.
 - `fases.md` manda: si cambia una fila, se cambia también en `plan.yaml`.

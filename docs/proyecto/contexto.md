@@ -47,7 +47,6 @@ Las del PO (D-PO1…D-PO12) están en `docs/proyecto/vision.md`, sección 12. La
 | # | Decisión | Propuesta por defecto | Se cierra en |
 |---|---|---|---|
 | D2 | Dónde viven las tareas | GitHub Issues del repo | S3 |
-| D3 | Gestión de estado y navegación en Flutter | Riverpod + go_router | S5 |
 | D4 | Búsqueda de lugares al fijar el punto | Pin + dirección inversa; autocompletado solo si cabe en el cupo gratis | B3 |
 | D5 | Evitar la pausa del plan gratis de Supabase | Ping programado con GitHub Actions; Pro durante la ronda de demos | S7 |
 | D6 | Cómo se cobra la suscripción en Venezuela | Compras dentro de la app de Apple y Google, si las tarjetas locales funcionan | Antes del cobro real (producto v1) |
@@ -58,6 +57,7 @@ Cerradas:
 - 2026-10-18 · Registro propio de recorrido y pasos fuera del MVP; en el producto se importan actividades → ADR-0003.
 - 2026-10-25 · D1: verificación con Didit, obligatoria para crear y solicitar → ADR-0004.
 - 2026-10-25 · Con el PO: mercado Venezuela, Caracas (D-PO1); ingresos por suscripción según conexiones (D-PO6) → ADR-0005; diseño sin diseñador (D-PO8); fecha de 5–7 semanas a ~20 h/semana (D-PO9). Detalle en `vision.md`, sección 12.
+- 2026-10-26 · D3: estado con Riverpod, navegación con go_router y Archivo variable empaquetada, sin google_fonts → ADR-0006.
 
 ## Documentos del proyecto
 Viven en `docs/proyecto/`; el vault, en `vault/`.
