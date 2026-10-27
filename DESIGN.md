@@ -31,7 +31,7 @@ Contraste calculado con `contraste.py` de la skill `direccion-visual` del harnes
 
 - **Tonos alternativos** (probados en el prototipo con el selector de tono): rojo tartán `#C83A26` y verde pista `#0B7A54`. El elegido es el azul.
 - **Modo oscuro:** la app es oscura por diseño; no hay modo claro.
-- **Tipografía:** Archivo para las cifras (ancho 62–70 %, peso 900, itálica, números tabulares) y Outfit para todo lo demás (400–800). Etiquetas en mayúsculas de 11–12 px con espaciado de 0,06 em. *Por verificar en S5:* si `google_fonts` sirve el eje de ancho de Archivo; si no, se empaqueta el TTF variable y se usa `fontVariations`.
+- **Tipografía:** Archivo para las cifras (ancho 62–70 %, peso 900, itálica, números tabulares) y Outfit para todo lo demás (400–800). Etiquetas en mayúsculas de 11–12 px con espaciado de 0,06 em. *Verificado en S5:* `google_fonts` 9.0.0 no sirve el eje de ancho de Archivo (`archivo()` no acepta `fontVariations` y descarga archivos estáticos por peso). La app empaqueta el TTF variable (ejes `wdth` 62–125 y `wght` 100–900, normal e itálica) en `app/assets/fonts/` y fija el ancho con `fontVariations` (ADR-0006).
 - **Forma:** acciones y filtros en píldora; tarjetas con radio 20–22; chip de fecha con radio 10–12; avatares con borde blanco de 3 px. Margen lateral de 20 y ritmo de 4.
 - **Toque:** 48 × 48 como mínimo. Texto base de 15–16 y respeto del tamaño de texto del sistema.
 - **Movimiento** (curva de entrada `cubic-bezier(.2,.8,.2,1)`):

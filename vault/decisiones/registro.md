@@ -13,3 +13,4 @@ generado: true
 | 2026-10-18 | [[ADR-0003-tracking-fuera-del-mvp]] | El registro propio de recorrido y pasos queda fuera del MVP | alcance, mvp, ubicacion, producto | aceptada |
 | 2026-10-25 | [[ADR-0004-verificacion-identidad-didit]] | La verificación de identidad se hace con Didit, para crear y solicitar | verificacion, identidad, seguridad, mvp, costos | aceptada |
 | 2026-10-25 | [[ADR-0005-ingresos-suscripcion-por-conexiones]] | Ingresos por suscripción según conexiones; el MVP muestra los planes sin cobrar | ingresos, suscripcion, solicitudes, metricas, mvp | aceptada |
+| 2026-10-26 | [[ADR-0006-estado-navegacion-y-fuente-archivo]] | Estado con Riverpod, navegación con go_router y Archivo variable empaquetada, sin google_fonts | app, estado, navegacion, tipografia, mvp | aceptada |
