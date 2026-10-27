@@ -66,6 +66,7 @@ No depende de las respuestas del PO: todo está decidido en ADR-0001. Se puede c
 #### S5 · Esqueleto de la app
 - **Hace:** `flutter create` en `app/`; entornos dev y prod (con `--dart-define`); lints estrictos; estructura por funcionalidad; cierra D3 (estado y navegación) con un ADR. Heredado de H5 (harness): comprobar si Archivo con eje de ancho funciona con `google_fonts` o hay que empaquetar el TTF variable (ver `DESIGN.md`).
 - **Hecho cuando:** `flutter analyze` sin avisos y `flutter test` en verde; la app abre en el simulador de iOS y en el emulador de Android y muestra el entorno activo, con una cifra en Archivo condensado (ancho 62).
+- **Estado (2026-10-26):** hecha en Android; D3 cerrada en ADR-0006 y Archivo empaquetada. Pendiente: abrir en el simulador de iOS (necesita la Mac) → ola de cierre de B1; empaquetar Outfit → sesión del tema (B2).
 
 #### S6 · Supabase
 - **Hace:** `supabase init` en la raíz y entorno local con Docker; Moisés crea los proyectos Free dev y prod; la app se conecta con `supabase_flutter`, con claves fuera de git.

@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'features/inicio/pantalla_inicio.dart';
+import 'core/navegacion/router.dart';
 
-void main() => runApp(const PacerMatchApp());
+void main() => runApp(const ProviderScope(child: PacerMatchApp()));
 
-class PacerMatchApp extends StatelessWidget {
+class PacerMatchApp extends ConsumerWidget {
   const PacerMatchApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context, WidgetRef ref) {
+    return MaterialApp.router(
       title: 'Pacer Match',
       theme: ThemeData(brightness: Brightness.dark, useMaterial3: true),
-      home: const PantallaInicio(),
+      routerConfig: ref.watch(routerProvider),
     );
   }
 }
