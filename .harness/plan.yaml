@@ -106,7 +106,7 @@ sesiones:
       Escribe ADR-0006, que cierra D3, y agrega su fila al registro. En DESIGN.md anota si google_fonts sirve el eje de ancho de Archivo (comprobado, no supuesto) y que la app empaqueta el TTF.
       La sesión se retoma en la rama feature/s5-esqueleto-de-la-app, desde a4ac7ed: no rehagas lo que ya está.
     lee: [DESIGN.md, "vault/decisiones/ADR-0001-stack-mvp-flutter-supabase.md"]
-    estado: pendiente
+    estado: en_curso
     notas: La parte de iOS de su "hecho cuando" (fases.md) se comprueba en la Mac al aprobar el hito B1.
 
   - id: S6
