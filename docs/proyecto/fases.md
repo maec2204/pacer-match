@@ -130,3 +130,6 @@ Lo que no tiene una sesión que lo resuelva. Al cerrar cada sesión se revisa es
 | 2026-10-26 | Probar la inscripción en Apple Developer con datos y tarjeta de Venezuela, antes de B5 | Reunión del 26-10 |
 | 2026-10-26 | Fondos, avatares desbloqueables y patrocinios de marca: decidir con la PO si son parte del producto v1 y si algo va como demo en el MVP | Reunión del 26-10 |
 | 2026-10-26 | Publicar en Google Play con cuenta personal: prueba cerrada con 12 testers durante 14 días seguidos antes de pedir producción (producto v1) | Reunión del 26-10 |
+| 2026-11-07 | Llevar a `vision.md` (y a la PO) que el público objetivo son corredores de élite o que aspiran a serlo, y que el ritmo se registra a la décima de segundo; hoy la visión dice "corredor independiente" | Grilling del tipo Ritmo |
+| 2026-11-07 | Crear una sesión para migrar a inglés los identificadores del código (carpetas, clases, métodos, como `core/componentes/`, `Ritmo.decimas`); el glosario conserva el término de negocio en español ↔ identificador | Grilling del campo de ritmo (#9) |
+| 2026-11-07 | Preguntar a la PO si el perfil lleva "Distancias que te gustan" (5K/10K/21K/42K), como en el prototipo Pista viva; la visión no las incluye y quedaron fuera del formulario del perfil (#9) | Grilling del campo de ritmo (#9) |
