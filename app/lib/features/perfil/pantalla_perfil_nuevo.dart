@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import '../../core/componentes/campo_ritmo.dart';
 import '../../core/dominio/ritmo.dart';
 import '../../core/navegacion/router.dart';
+import '../../core/tema/estilo_error.dart';
 import 'perfil.dart';
 import 'repositorio_perfil.dart';
 import 'selector_foto.dart';
@@ -93,7 +94,7 @@ class _PantallaPerfilNuevoState extends ConsumerState<PantallaPerfilNuevo> {
     return Scaffold(
       body: SafeArea(
         child: ListView(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
           children: [
             Text(
               '¿A qué ritmo corres?',
@@ -139,7 +140,7 @@ class _PantallaPerfilNuevoState extends ConsumerState<PantallaPerfilNuevo> {
             if (_fallo) ...[
               Text(
                 'No pudimos guardar tu perfil. Intenta de nuevo.',
-                style: TextStyle(color: Theme.of(context).colorScheme.error),
+                style: estiloError(context),
               ),
               const SizedBox(height: 8),
             ],

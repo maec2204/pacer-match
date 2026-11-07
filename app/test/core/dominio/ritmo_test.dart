@@ -31,6 +31,29 @@ void main() {
     }
   });
 
+  group('partes de M:SS.d', () {
+    test('"4:05.3" son 4 minutos, 5 segundos y 3 décimas', () {
+      final ritmo = Ritmo.parse('4:05.3');
+      expect(ritmo.minutos, 4);
+      expect(ritmo.segundosDelMinuto, 5);
+      expect(ritmo.decimaDelSegundo, 3);
+    });
+
+    test('"12:59.9" son 12 minutos, 59 segundos y 9 décimas', () {
+      final ritmo = Ritmo.parse('12:59.9');
+      expect(ritmo.minutos, 12);
+      expect(ritmo.segundosDelMinuto, 59);
+      expect(ritmo.decimaDelSegundo, 9);
+    });
+
+    test('"10:00" son 10 minutos, 0 segundos y 0 décimas', () {
+      final ritmo = Ritmo.parse('10:00');
+      expect(ritmo.minutos, 10);
+      expect(ritmo.segundosDelMinuto, 0);
+      expect(ritmo.decimaDelSegundo, 0);
+    });
+  });
+
   group('comparar', () {
     final rapido = Ritmo.parse('4:05.3');
     final lento = Ritmo.parse('4:05.4');

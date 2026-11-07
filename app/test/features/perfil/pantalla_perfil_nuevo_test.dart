@@ -90,15 +90,11 @@ void main() {
     await abrirPerfilNuevo(tester, repositorio, selector: selector);
     expect(fotoEnElHueco(tester), isNull);
 
-    await elegirFoto(tester, 'Elegir de la galería');
+    await _llenarFormulario(tester);
 
     expect(selector.origenes, [OrigenFoto.galeria]);
     expect(fotoEnElHueco(tester), fotoDePrueba);
 
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.enterText(find.byType(TextField), 'Caracas');
-    await tester.tap(find.text('Tengo 18 años o más'));
-    await tester.pump();
     await tester.tap(_seguir);
     await tester.pumpAndSettle();
 
@@ -162,6 +158,18 @@ void main() {
     await tester.tap(_seguir);
     await tester.pumpAndSettle();
     expect(repositorio.guardado!.ritmoRodaje, Ritmo.parse('4:05.3'));
+  });
+
+  testWidgets('el campo de ciudad empieza vacío', (tester) async {
+    await abrirPerfilNuevo(tester, RepositorioPerfilEnMemoria());
+
+    final ciudad = tester.widget<EditableText>(
+      find.descendant(
+        of: find.widgetWithText(TextField, 'Ciudad'),
+        matching: find.byType(EditableText),
+      ),
+    );
+    expect(ciudad.controller.text, isEmpty);
   });
 
   testWidgets('"Seguir" se apaga si falta la foto, el ritmo, la ciudad o la '

@@ -11,6 +11,15 @@ class Ritmo implements Comparable<Ritmo> {
   /// Segundos por kilómetro: "4:05.3" → 245.3.
   double get segundos => decimas / 10;
 
+  /// Los minutos de "M:SS.d": "4:05.3" → 4.
+  int get minutos => decimas ~/ 600;
+
+  /// Los segundos de "M:SS.d", de 0 a 59: "4:05.3" → 5.
+  int get segundosDelMinuto => (decimas ~/ 10) % 60;
+
+  /// La décima de "M:SS.d", de 0 a 9: "4:05.3" → 3.
+  int get decimaDelSegundo => decimas % 10;
+
   // M:SS o M:SS.d — minutos de 1 o 2 cifras, segundos 00–59, una décima opcional.
   static final _formato = RegExp(r'^(\d{1,2}):([0-5]\d)(?:\.(\d))?$');
 
@@ -41,11 +50,9 @@ class Ritmo implements Comparable<Ritmo> {
 
   /// Siempre "M:SS.d": 2450 → "4:05.0".
   @override
-  String toString() {
-    final minutos = decimas ~/ 600;
-    final segundos = (decimas ~/ 10) % 60;
-    return '$minutos:${segundos.toString().padLeft(2, '0')}.${decimas % 10}';
-  }
+  String toString() =>
+      '$minutos:${segundosDelMinuto.toString().padLeft(2, '0')}'
+      '.$decimaDelSegundo';
 
   @override
   int compareTo(Ritmo otro) => decimas.compareTo(otro.decimas);

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import '../dominio/ritmo.dart';
 import '../tema/estilo_cifra.dart';
+import '../tema/estilo_error.dart';
 
 /// Campo de ritmo compartido (perfil, entrenamiento y filtro): la cifra grande
 /// con − / +, de segundo en segundo, entre [minimo] y [maximo]. Al tocar la
@@ -32,6 +33,15 @@ class CampoRitmo extends StatefulWidget {
 class _CampoRitmoState extends State<CampoRitmo> {
   static const String _vacio = '–:––.–';
 
+  /// "Entre 2:30 y 10:00 /km": los límites sin décima.
+  static final String _fueraDeRango =
+      'Entre ${_sinDecima(CampoRitmo.minimo)} y '
+      '${_sinDecima(CampoRitmo.maximo)} /km';
+
+  /// "M:SS": 2:30.0 → "2:30".
+  static String _sinDecima(Ritmo ritmo) =>
+      '${ritmo.minutos}:${ritmo.segundosDelMinuto.toString().padLeft(2, '0')}';
+
   final _texto = TextEditingController();
   final _foco = FocusNode();
   bool _escribiendo = false;
@@ -58,14 +68,15 @@ class _CampoRitmoState extends State<CampoRitmo> {
   void _mover(int segundos) {
     final actual = widget.valor;
     if (actual == null) return widget.alCambiar(CampoRitmo.inicial);
-    final nuevo = actual.sumarSegundos(segundos);
-    widget.alCambiar(
-      nuevo < CampoRitmo.minimo
-          ? CampoRitmo.minimo
-          : nuevo > CampoRitmo.maximo
-          ? CampoRitmo.maximo
-          : nuevo,
-    );
+    widget.alCambiar(_dentroDelRango(actual.sumarSegundos(segundos)));
+  }
+
+  /// [ritmo], o el límite más cercano si queda fuera de
+  /// [CampoRitmo.minimo]–[CampoRitmo.maximo].
+  static Ritmo _dentroDelRango(Ritmo ritmo) {
+    if (ritmo < CampoRitmo.minimo) return CampoRitmo.minimo;
+    if (ritmo > CampoRitmo.maximo) return CampoRitmo.maximo;
+    return ritmo;
   }
 
   void _empezarAEscribir() {
@@ -85,7 +96,7 @@ class _CampoRitmoState extends State<CampoRitmo> {
     final error = ritmo == null
         ? 'Escribe el ritmo como 4:05.3'
         : ritmo < CampoRitmo.minimo || ritmo > CampoRitmo.maximo
-        ? 'Entre 2:30 y 10:00 /km'
+        ? _fueraDeRango
         : null;
     setState(() {
       _escribiendo = false;
@@ -102,11 +113,7 @@ class _CampoRitmoState extends State<CampoRitmo> {
       mainAxisSize: MainAxisSize.min,
       children: [
         _cifra(valor),
-        if (error != null)
-          Text(
-            error,
-            style: TextStyle(color: Theme.of(context).colorScheme.error),
-          ),
+        if (error != null) Text(error, style: estiloError(context)),
       ],
     );
   }
@@ -115,8 +122,8 @@ class _CampoRitmoState extends State<CampoRitmo> {
   /// 4:05.3 → "Ritmo, 4 minutos 5,3 segundos por kilómetro".
   static String _enPalabras(Ritmo? valor) {
     if (valor == null) return 'Ritmo, todavía no hay ritmo';
-    final d = valor.decimas;
-    return 'Ritmo, ${d ~/ 600} minutos ${(d ~/ 10) % 60},${d % 10} segundos '
+    return 'Ritmo, ${valor.minutos} minutos '
+        '${valor.segundosDelMinuto},${valor.decimaDelSegundo} segundos '
         'por kilómetro';
   }
 
@@ -153,7 +160,7 @@ class _CampoRitmoState extends State<CampoRitmo> {
               child: Text(valor?.toString() ?? _vacio, style: estiloCifra()),
             ),
           ),
-        const SizedBox(width: 6),
+        const SizedBox(width: 8),
         // La unidad ya va en lo que anuncia la cifra.
         const ExcludeSemantics(child: Text('/km')),
         IconButton(
@@ -176,10 +183,12 @@ class _AcomodarCifras extends TextInputFormatter {
   ) {
     final cifras = nuevo.text.replaceAll(RegExp(r'\D'), '');
     if (cifras.isEmpty) return TextEditingValue.empty;
-    final c = cifras.padLeft(4, '–');
-    final n = c.length;
-    final texto =
-        '${c.substring(0, n - 3)}:${c.substring(n - 3, n - 1)}.${c[n - 1]}';
+    final completas = cifras.padLeft(4, '–');
+    final largo = completas.length;
+    final minutos = completas.substring(0, largo - 3);
+    final segundos = completas.substring(largo - 3, largo - 1);
+    final decima = completas[largo - 1];
+    final texto = '$minutos:$segundos.$decima';
     return TextEditingValue(
       text: texto,
       selection: TextSelection.collapsed(offset: texto.length),
