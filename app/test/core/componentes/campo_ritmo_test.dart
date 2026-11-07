@@ -192,4 +192,53 @@ void main() {
     expect(entregados, [Ritmo.parse('4:05.3')]);
     expect(find.text('4:05.3'), findsOneWidget);
   });
+  testWidgets('el lector de pantalla anuncia − como "Más rápido" y + como '
+      '"Más lento"', (tester) async {
+    final semantica = tester.ensureSemantics();
+    await montar(tester, Ritmo.parse('4:05.3'));
+    expect(
+      find.ancestor(
+        of: find.byIcon(Icons.remove),
+        matching: find.bySemanticsLabel('Más rápido'),
+      ),
+      findsOneWidget,
+    );
+    expect(
+      find.ancestor(
+        of: find.byIcon(Icons.add),
+        matching: find.bySemanticsLabel('Más lento'),
+      ),
+      findsOneWidget,
+    );
+    semantica.dispose();
+  });
+
+  testWidgets(
+    'con 4:05.3, el lector de pantalla anuncia la cifra en palabras',
+    (tester) async {
+      final semantica = tester.ensureSemantics();
+      await montar(tester, Ritmo.parse('4:05.3'));
+      expect(
+        find.bySemanticsLabel('Ritmo, 4 minutos 5,3 segundos por kilómetro'),
+        findsOneWidget,
+      );
+      expect(find.bySemanticsLabel('4:05.3'), findsNothing);
+      expect(find.bySemanticsLabel('/km'), findsNothing);
+      semantica.dispose();
+    },
+  );
+
+  testWidgets('vacío, el lector de pantalla anuncia que todavía no hay ritmo '
+      'y tocar la cifra abre el teclado', (tester) async {
+    final semantica = tester.ensureSemantics();
+    await montar(tester, null);
+    expect(
+      find.bySemanticsLabel('Ritmo, todavía no hay ritmo'),
+      findsOneWidget,
+    );
+    tester.semantics.tap(find.semantics.byLabel('Ritmo, todavía no hay ritmo'));
+    await tester.pump();
+    expect(find.byType(TextField), findsOneWidget);
+    semantica.dispose();
+  });
 }

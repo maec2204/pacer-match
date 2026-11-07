@@ -111,6 +111,15 @@ class _CampoRitmoState extends State<CampoRitmo> {
     );
   }
 
+  /// Lo que anuncia el lector de pantalla por la cifra:
+  /// 4:05.3 → "Ritmo, 4 minutos 5,3 segundos por kilómetro".
+  static String _enPalabras(Ritmo? valor) {
+    if (valor == null) return 'Ritmo, todavía no hay ritmo';
+    final d = valor.decimas;
+    return 'Ritmo, ${d ~/ 600} minutos ${(d ~/ 10) % 60},${d % 10} segundos '
+        'por kilómetro';
+  }
+
   /// La cifra (o lo que se va escribiendo) con − / + y la unidad.
   Widget _cifra(Ritmo? valor) {
     return Row(
@@ -118,7 +127,7 @@ class _CampoRitmoState extends State<CampoRitmo> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         IconButton(
-          icon: const Icon(Icons.remove),
+          icon: const Icon(Icons.remove, semanticLabel: 'Más rápido'),
           onPressed: valor == CampoRitmo.minimo ? null : () => _mover(-1),
         ),
         if (_escribiendo)
@@ -138,12 +147,17 @@ class _CampoRitmoState extends State<CampoRitmo> {
         else
           GestureDetector(
             onTap: _empezarAEscribir,
-            child: Text(valor?.toString() ?? _vacio, style: estiloCifra()),
+            child: Semantics(
+              label: _enPalabras(valor),
+              excludeSemantics: true,
+              child: Text(valor?.toString() ?? _vacio, style: estiloCifra()),
+            ),
           ),
         const SizedBox(width: 6),
-        const Text('/km'),
+        // La unidad ya va en lo que anuncia la cifra.
+        const ExcludeSemantics(child: Text('/km')),
         IconButton(
-          icon: const Icon(Icons.add),
+          icon: const Icon(Icons.add, semanticLabel: 'Más lento'),
           onPressed: valor == CampoRitmo.maximo ? null : () => _mover(1),
         ),
       ],
