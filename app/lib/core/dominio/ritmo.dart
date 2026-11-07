@@ -30,6 +30,15 @@ class Ritmo implements Comparable<Ritmo> {
     return decimas == 0 ? null : Ritmo._(decimas);
   }
 
+  /// Este ritmo más [segundos] (negativo es más rápido); la décima se conserva:
+  /// 4:05.3 − 1 → 4:04.3. Lanza [RangeError] si el resultado no es mayor que
+  /// cero.
+  Ritmo sumarSegundos(int segundos) {
+    final nuevo = decimas + segundos * 10;
+    if (nuevo <= 0) throw RangeError.value(nuevo, 'segundos');
+    return Ritmo._(nuevo);
+  }
+
   /// Siempre "M:SS.d": 2450 → "4:05.0".
   @override
   String toString() {

@@ -53,4 +53,15 @@ void main() {
       expect(lista.map((r) => r.toString()), ['3:59.9', '4:05.3', '4:05.4']);
     });
   });
+
+  group('sumarSegundos', () {
+    test('conserva la décima', () {
+      expect(Ritmo.parse('4:05.3').sumarSegundos(-1), Ritmo.parse('4:04.3'));
+      expect(Ritmo.parse('4:59.3').sumarSegundos(1), Ritmo.parse('5:00.3'));
+    });
+
+    test('no baja de una décima', () {
+      expect(() => Ritmo.parse('0:00.5').sumarSegundos(-1), throwsRangeError);
+    });
+  });
 }
