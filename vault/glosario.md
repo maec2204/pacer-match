@@ -11,6 +11,7 @@ Término de negocio (español) ↔ identificador en el código (tal cual). Sin c
 | Término | En el código | Nota |
 |---|---|---|
 | Corredor | — | Usuario registrado con perfil de ritmo. |
+| Perfil | — | Los datos con los que un corredor se presenta: foto, ritmo de rodaje, ciudad y su declaración de que tiene 18 años o más. Autodeclarado en el MVP. |
 | Visitante | — | Explora el feed sin registrarse; ve solo zona y ritmo. |
 | Ritmo (pace) | `Ritmo` | Minutos por kilómetro (min/km), con precisión de décima de segundo, como en competición. Autodeclarado en el MVP. Un solo concepto con tres usos: el ritmo de rodaje del perfil, el ritmo objetivo del entrenamiento y los extremos del rango de ritmo del feed. |
 | Rodaje | — | Carrera suave habitual; el perfil guarda su ritmo promedio. |
