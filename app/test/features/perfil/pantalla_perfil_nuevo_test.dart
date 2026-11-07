@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pacer_match/core/dominio/ritmo.dart';
 import 'package:pacer_match/core/navegacion/router.dart';
+import 'package:pacer_match/features/perfil/perfil.dart';
 import 'package:pacer_match/features/perfil/repositorio_perfil.dart';
 import 'package:pacer_match/main.dart';
 
@@ -90,4 +93,71 @@ void main() {
     await tester.pump();
     expect(seguirActivo(tester), isFalse);
   });
+
+  testWidgets('mientras guarda, "Seguir" se apaga y un segundo toque no vuelve '
+      'a guardar', (tester) async {
+    final repositorio = _RepositorioQueTarda();
+    await abrirPerfilNuevo(tester, repositorio);
+    await _llenarFormulario(tester);
+
+    await tester.tap(_seguir);
+    await tester.pump();
+    expect(seguirActivo(tester), isFalse);
+    await tester.tap(_seguir);
+    await tester.pump();
+    expect(repositorio.intentos, 1);
+
+    repositorio.terminar();
+    await tester.pumpAndSettle();
+  });
+
+  testWidgets('si el guardado falla, avisa, sigue en el formulario con los '
+      'datos y "Seguir" vuelve a estar activo', (tester) async {
+    final router = await abrirPerfilNuevo(tester, _RepositorioQueFalla());
+    await _llenarFormulario(tester);
+
+    await tester.tap(_seguir);
+    await tester.pumpAndSettle();
+
+    expect(
+      find.text('No pudimos guardar tu perfil. Intenta de nuevo.'),
+      findsOneWidget,
+    );
+    expect(router.state.uri.path, Rutas.perfilNuevo);
+    expect(find.text('5:00.0'), findsOneWidget);
+    expect(find.text('Caracas'), findsOneWidget);
+    expect(
+      tester.widget<CheckboxListTile>(find.byType(CheckboxListTile)).value,
+      isTrue,
+    );
+    expect(seguirActivo(tester), isTrue);
+  });
+}
+
+/// Ritmo 5:00.0, ciudad "Caracas" y casilla 18+ marcada.
+Future<void> _llenarFormulario(WidgetTester tester) async {
+  await tester.tap(find.byIcon(Icons.remove));
+  await tester.enterText(find.byType(TextField), 'Caracas');
+  await tester.tap(find.text('Tengo 18 años o más'));
+  await tester.pump();
+}
+
+/// No termina de guardar hasta que se llama a [terminar].
+class _RepositorioQueTarda implements RepositorioPerfil {
+  final _guardado = Completer<void>();
+  int intentos = 0;
+
+  void terminar() => _guardado.complete();
+
+  @override
+  Future<void> guardar(Perfil perfil) {
+    intentos++;
+    return _guardado.future;
+  }
+}
+
+/// Siempre falla al guardar.
+class _RepositorioQueFalla implements RepositorioPerfil {
+  @override
+  Future<void> guardar(Perfil perfil) async => throw Exception('sin conexión');
 }
