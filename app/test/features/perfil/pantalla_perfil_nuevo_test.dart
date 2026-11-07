@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pacer_match/core/componentes/campo_ritmo.dart';
 import 'package:pacer_match/core/dominio/ritmo.dart';
 import 'package:pacer_match/core/navegacion/router.dart';
 import 'package:pacer_match/features/perfil/perfil.dart';
@@ -61,6 +62,36 @@ void main() {
     expect(perfil.ciudad, 'Caracas');
     expect(perfil.mayorDeEdad, isTrue);
     expect(router.state.uri.path, Rutas.inicio);
+  });
+
+  testWidgets('escribir el ritmo, más ciudad y 18+, activa "Seguir"', (
+    tester,
+  ) async {
+    final repositorio = RepositorioPerfilEnMemoria();
+    await abrirPerfilNuevo(tester, repositorio);
+
+    await tester.tap(find.text('–:––.–'));
+    await tester.pump();
+    await tester.enterText(
+      find.descendant(
+        of: find.byType(CampoRitmo),
+        matching: find.byType(TextField),
+      ),
+      '4053',
+    );
+    await tester.testTextInput.receiveAction(TextInputAction.done);
+    await tester.pump();
+    expect(find.text('4:05.3'), findsOneWidget);
+    expect(seguirActivo(tester), isFalse);
+
+    await tester.enterText(find.byType(TextField), 'Caracas');
+    await tester.tap(find.text('Tengo 18 años o más'));
+    await tester.pump();
+    expect(seguirActivo(tester), isTrue);
+
+    await tester.tap(_seguir);
+    await tester.pumpAndSettle();
+    expect(repositorio.guardado!.ritmoRodaje, Ritmo.parse('4:05.3'));
   });
 
   testWidgets('"Seguir" se apaga si falta el ritmo, la ciudad o la casilla', (

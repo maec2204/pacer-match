@@ -4,16 +4,40 @@ import 'package:pacer_match/core/componentes/campo_ritmo.dart';
 import 'package:pacer_match/core/dominio/ritmo.dart';
 
 /// Monta el campo con [valor] y devuelve la lista de lo que entrega `alCambiar`.
+/// Como en un formulario, lo entregado pasa a ser el valor que se muestra.
 Future<List<Ritmo>> montar(WidgetTester tester, Ritmo? valor) async {
   final entregados = <Ritmo>[];
   await tester.pumpWidget(
     MaterialApp(
       home: Scaffold(
-        body: CampoRitmo(valor: valor, alCambiar: entregados.add),
+        body: StatefulBuilder(
+          builder: (context, setState) => CampoRitmo(
+            valor: valor,
+            alCambiar: (ritmo) {
+              entregados.add(ritmo);
+              setState(() => valor = ritmo);
+            },
+          ),
+        ),
       ),
     ),
   );
   return entregados;
+}
+
+/// Toca la cifra que muestra [cifra] y escribe [cifras] con el teclado, sin
+/// confirmar.
+Future<void> escribir(WidgetTester tester, String cifra, String cifras) async {
+  await tester.tap(find.text(cifra));
+  await tester.pump();
+  await tester.enterText(find.byType(TextField), cifras);
+  await tester.pump();
+}
+
+/// Confirma lo escrito con "Listo" en el teclado.
+Future<void> confirmar(WidgetTester tester) async {
+  await tester.testTextInput.receiveAction(TextInputAction.done);
+  await tester.pump();
 }
 
 /// Si el botón − / + con [icono] está activo.
@@ -90,5 +114,82 @@ void main() {
     await montar(tester, Ritmo.parse('2:30.5'));
     expect(activo(tester, Icons.remove), isTrue);
     expect(activo(tester, Icons.add), isTrue);
+  });
+
+  testWidgets('escribir "4053" y confirmar entrega 4:05.3 y muestra "4:05.3"', (
+    tester,
+  ) async {
+    final entregados = await montar(tester, null);
+    await escribir(tester, '–:––.–', '4053');
+    await confirmar(tester);
+    expect(entregados, [Ritmo.parse('4:05.3')]);
+    expect(find.text('4:05.3'), findsOneWidget);
+  });
+
+  testWidgets('"4653" (65 s) avisa el formato, vuelve al valor anterior y no '
+      'entrega nada', (tester) async {
+    final entregados = await montar(tester, Ritmo.parse('5:00.0'));
+    await escribir(tester, '5:00.0', '4653');
+    await confirmar(tester);
+    expect(find.text('Escribe el ritmo como 4:05.3'), findsOneWidget);
+    expect(find.text('5:00.0'), findsOneWidget);
+    expect(entregados, isEmpty);
+  });
+
+  for (final cifras in ['2000', '12300']) {
+    testWidgets('"$cifras" avisa el rango, vuelve al valor anterior y no '
+        'entrega nada', (tester) async {
+      final entregados = await montar(tester, Ritmo.parse('5:00.0'));
+      await escribir(tester, '5:00.0', cifras);
+      await confirmar(tester);
+      expect(find.text('Entre 2:30 y 10:00 /km'), findsOneWidget);
+      expect(find.text('5:00.0'), findsOneWidget);
+      expect(entregados, isEmpty);
+    });
+  }
+
+  testWidgets('mientras se escribe no aparece ningún mensaje', (tester) async {
+    await montar(tester, Ritmo.parse('5:00.0'));
+    await escribir(tester, '5:00.0', '4653');
+    expect(find.text('Escribe el ritmo como 4:05.3'), findsNothing);
+    await tester.enterText(find.byType(TextField), '2000');
+    await tester.pump();
+    expect(find.text('Entre 2:30 y 10:00 /km'), findsNothing);
+
+    // Tampoco queda el aviso de un intento anterior.
+    await confirmar(tester);
+    expect(find.text('Entre 2:30 y 10:00 /km'), findsOneWidget);
+    await escribir(tester, '5:00.0', '4');
+    expect(find.text('Entre 2:30 y 10:00 /km'), findsNothing);
+  });
+
+  testWidgets('mientras se escribe, las cifras se acomodan de derecha a '
+      'izquierda', (tester) async {
+    await montar(tester, null);
+    await escribir(tester, '–:––.–', '4053');
+    expect(find.text('4:05.3'), findsOneWidget);
+    await tester.enterText(find.byType(TextField), '12300');
+    await tester.pump();
+    expect(find.text('12:30.0'), findsOneWidget);
+  });
+
+  testWidgets('confirmar sin escribir nada deja el valor y no avisa', (
+    tester,
+  ) async {
+    final entregados = await montar(tester, Ritmo.parse('5:00.0'));
+    await escribir(tester, '5:00.0', '');
+    await confirmar(tester);
+    expect(find.text('5:00.0'), findsOneWidget);
+    expect(find.text('Escribe el ritmo como 4:05.3'), findsNothing);
+    expect(entregados, isEmpty);
+  });
+
+  testWidgets('salir del campo también revisa lo escrito', (tester) async {
+    final entregados = await montar(tester, Ritmo.parse('5:00.0'));
+    await escribir(tester, '5:00.0', '4053');
+    FocusManager.instance.primaryFocus!.unfocus();
+    await tester.pump();
+    expect(entregados, [Ritmo.parse('4:05.3')]);
+    expect(find.text('4:05.3'), findsOneWidget);
   });
 }
