@@ -25,16 +25,33 @@ class _PantallaPerfilNuevoState extends ConsumerState<PantallaPerfilNuevo> {
   bool get _completo =>
       _ritmo != null && _ciudad.trim().isNotEmpty && _mayorDeEdad;
 
+  bool _guardando = false;
+  bool _fallo = false;
+
   Future<void> _seguir() async {
-    await ref
-        .read(repositorioPerfilProvider)
-        .guardar(
-          Perfil(
-            ritmoRodaje: _ritmo!,
-            ciudad: _ciudad.trim(),
-            mayorDeEdad: _mayorDeEdad,
-          ),
-        );
+    setState(() {
+      _guardando = true;
+      _fallo = false;
+    });
+    try {
+      await ref
+          .read(repositorioPerfilProvider)
+          .guardar(
+            Perfil(
+              ritmoRodaje: _ritmo!,
+              ciudad: _ciudad.trim(),
+              mayorDeEdad: _mayorDeEdad,
+            ),
+          );
+    } catch (_) {
+      if (mounted) {
+        setState(() {
+          _guardando = false;
+          _fallo = true;
+        });
+      }
+      return;
+    }
     if (mounted) context.go(Rutas.inicio);
   }
 
@@ -73,8 +90,15 @@ class _PantallaPerfilNuevoState extends ConsumerState<PantallaPerfilNuevo> {
                   setState(() => _mayorDeEdad = marcada ?? false),
             ),
             const SizedBox(height: 24),
+            if (_fallo) ...[
+              Text(
+                'No pudimos guardar tu perfil. Intenta de nuevo.',
+                style: TextStyle(color: Theme.of(context).colorScheme.error),
+              ),
+              const SizedBox(height: 8),
+            ],
             FilledButton(
-              onPressed: _completo ? _seguir : null,
+              onPressed: _completo && !_guardando ? _seguir : null,
               child: const Text('Seguir'),
             ),
           ],
