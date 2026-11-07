@@ -16,6 +16,18 @@ Future<List<Ritmo>> montar(WidgetTester tester, Ritmo? valor) async {
   return entregados;
 }
 
+/// Si el botón − / + con [icono] está activo.
+bool activo(WidgetTester tester, IconData icono) =>
+    tester
+        .widget<IconButton>(
+          find.ancestor(
+            of: find.byIcon(icono),
+            matching: find.byType(IconButton),
+          ),
+        )
+        .onPressed !=
+    null;
+
 void main() {
   testWidgets('vacío muestra "–:––.–" y la unidad "/km"', (tester) async {
     await montar(tester, null);
@@ -48,5 +60,35 @@ void main() {
     final entregados = await montar(tester, Ritmo.parse('4:05.3'));
     await tester.tap(find.byIcon(Icons.add));
     expect(entregados, [Ritmo.parse('4:06.3')]);
+  });
+
+  testWidgets('con 2:30.5, − se queda en 2:30.0', (tester) async {
+    final entregados = await montar(tester, Ritmo.parse('2:30.5'));
+    await tester.tap(find.byIcon(Icons.remove));
+    expect(entregados, [Ritmo.parse('2:30.0')]);
+  });
+
+  testWidgets('con 9:59.5, + se queda en 10:00.0', (tester) async {
+    final entregados = await montar(tester, Ritmo.parse('9:59.5'));
+    await tester.tap(find.byIcon(Icons.add));
+    expect(entregados, [Ritmo.parse('10:00.0')]);
+  });
+
+  testWidgets('en 2:30.0, − está apagado y + activo', (tester) async {
+    await montar(tester, Ritmo.parse('2:30.0'));
+    expect(activo(tester, Icons.remove), isFalse);
+    expect(activo(tester, Icons.add), isTrue);
+  });
+
+  testWidgets('en 10:00.0, + está apagado y − activo', (tester) async {
+    await montar(tester, Ritmo.parse('10:00.0'));
+    expect(activo(tester, Icons.add), isFalse);
+    expect(activo(tester, Icons.remove), isTrue);
+  });
+
+  testWidgets('en 2:30.5, − y + están activos', (tester) async {
+    await montar(tester, Ritmo.parse('2:30.5'));
+    expect(activo(tester, Icons.remove), isTrue);
+    expect(activo(tester, Icons.add), isTrue);
   });
 }
