@@ -19,3 +19,17 @@ App móvil (Flutter + Supabase) que conecta corredores por ritmo, distancia, fec
 - Una sesión, una función. Si aparece trabajo de otra, se anota en `docs/proyecto/fases.md` (regla 9) y no se hace.
 - No inventar casos borde ni requisitos. Si falta información, una sola pregunta.
 - El punto de encuentro exacto nunca sale de la base de datos hacia quien no tiene match: lo garantiza RLS, no la app.
+
+## Agent skills
+
+### Issue tracker
+
+Los tickets viven en GitHub Issues de `maec2204/pacer-match` (CLI `gh`); `docs/proyecto/fases.md` sigue siendo el plan. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Etiquetas por defecto: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Un solo contexto: glosario en `vault/glosario.md` y ADRs en `vault/decisiones/`. See `docs/agents/domain.md`.
