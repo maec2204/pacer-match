@@ -10,6 +10,13 @@
 - Excepción (si la hubo): qué regla se saltó y por qué.
 -->
 
+## 2026-11-07 · B2 · Perfil con ritmo (spec #9)
+- Tickets #10–#15 en `perfil-ritmo` (PR #18): campo de ritmo compartido (`app/lib/core/componentes/campo_ritmo.dart`: − / + de 1 s, 2:30.0–10:00.0, escritura de derecha a izquierda, lector de pantalla), formulario `/perfil/nuevo` con foto (image_picker + image_cropper), ciudad, 18+ y repositorio en memoria; revisión de código aplicada.
+- Decisiones de Moisés (revisión): el aviso de error se borra con cualquier cambio válido; confirmar vacío muestra el aviso de formato; la ciudad se guarda tal cual; con un ritmo recibido fuera de rango, el botón que lo alejaría se apaga y el otro lleva al límite; Android declara CAMERA y READ_MEDIA_IMAGES aunque image_picker no los exige.
+- Decisiones de implementación aceptadas: el campo se abre vacío al tocar la cifra; vacío se anuncia "Ritmo, todavía no hay ritmo"; la décima se lee siempre ("5,0 segundos").
+- Descubierto: el glosario y los pendientes del grilling están en el PR #17, sin fusionar.
+- Pendientes movidos: prueba en Android, tema Pista viva del formulario y recuperar la foto (`retrieveLostData`) → B2 en `fases.md`; perfil en Supabase → #16.
+
 ## 2026-10-26 · S5 · Esqueleto de la app
 - `app/`: Flutter (Android e iOS, org `com.pacermatch`), entornos dev/prod con `--dart-define=ENTORNO`, lints estrictos, estructura por funcionalidad, Riverpod y go_router; pantalla provisional con el entorno y una cifra en Archivo ancho 62.
 - Decisión cerrada: D3 → [ADR-0006](../../vault/decisiones/ADR-0006-estado-navegacion-y-fuente-archivo.md) (Riverpod, go_router, Archivo variable empaquetada, sin google_fonts).

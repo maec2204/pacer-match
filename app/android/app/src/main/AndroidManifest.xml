@@ -1,4 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Foto del perfil: cámara (image_picker la pide al abrirla) y fotos del
+         teléfono. El README de image_picker no pide READ_EXTERNAL_STORAGE
+         para Android 12 o anterior, así que no se declara. -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
     <application
         android:label="Pacer Match"
         android:name="${applicationName}"
@@ -25,6 +30,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <!-- Recorte de la foto del perfil (image_cropper usa uCrop). Los
+             permisos de la galería y la cámara están arriba. -->
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data

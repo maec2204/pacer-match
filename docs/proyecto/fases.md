@@ -86,6 +86,7 @@ No depende de las respuestas del PO: todo está decidido en ADR-0001. Se puede c
 - **Heredado de S2:** elegir la biblioteca gratuita de imágenes (con licencia de uso comercial) y anotarla en `DESIGN.md`.
 - **Heredado de la reunión del 26-10:** dominio comprado (tras D-PO10) y correo de registro con SMTP propio (Resend Free) en Supabase: sin él, Supabase manda solo 2 correos por hora.
 - **Heredado de S5:** Outfit empaquetada en `app/assets/fonts/` (ADR-0006), sin `google_fonts`.
+- **Heredado del perfil con ritmo (#9, 2026-11-07):** en Android, abrir `/perfil/nuevo`, elegir una foto real de la galería y de la cámara, completar el perfil y volver al inicio (aquí no había SDK de Android). En la sesión del tema, llevar el formulario del perfil a los tokens de Pista viva (avatar con borde blanco de 3 px, botón píldora blanca, colores oscuros; hoy usa el Material por defecto). Decidir si se recupera la foto cuando Android cierra la app mientras se elige (`retrieveLostData`, lo recomienda image_picker). El perfil en Supabase es el ticket #16.
 - **Hecho cuando:** un usuario nuevo se registra, completa el perfil con foto y ritmo, y lo ve guardado al reabrir la app, en iOS y Android; Outfit sale de `app/assets/fonts/` y `pubspec.yaml` no tiene `google_fonts`.
 
 ### B3 · Entrenamientos
