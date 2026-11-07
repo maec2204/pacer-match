@@ -2,7 +2,7 @@
 tipo: glosario
 audiencia: ambos
 estado: vivo
-revisado: "2026-10-25"
+revisado: "2026-11-07"
 ---
 # Glosario
 
@@ -12,7 +12,7 @@ Término de negocio (español) ↔ identificador en el código (tal cual). Sin c
 |---|---|---|
 | Corredor | — | Usuario registrado con perfil de ritmo. |
 | Visitante | — | Explora el feed sin registrarse; ve solo zona y ritmo. |
-| Ritmo (pace) | — | Minutos por kilómetro (min/km). Autodeclarado en el MVP. |
+| Ritmo (pace) | `Ritmo` | Minutos por kilómetro (min/km), con precisión de décima de segundo, como en competición. Autodeclarado en el MVP. Un solo concepto con tres usos: el ritmo de rodaje del perfil, el ritmo objetivo del entrenamiento y los extremos del rango de ritmo del feed. |
 | Rodaje | — | Carrera suave habitual; el perfil guarda su ritmo promedio. |
 | Entrenamiento (sesión) | — | Publicación con tipo, distancia, ritmo objetivo, fecha/hora y punto de encuentro. |
 | Punto de encuentro | — | Coordenadas exactas que fija el creador; visibles solo tras el match. |
