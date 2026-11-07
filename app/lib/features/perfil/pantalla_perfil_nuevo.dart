@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -7,6 +9,7 @@ import '../../core/dominio/ritmo.dart';
 import '../../core/navegacion/router.dart';
 import 'perfil.dart';
 import 'repositorio_perfil.dart';
+import 'selector_foto.dart';
 
 /// Formulario del perfil: ritmo de rodaje, hueco de la foto, ciudad y 18+.
 class PantallaPerfilNuevo extends ConsumerStatefulWidget {
@@ -19,11 +22,41 @@ class PantallaPerfilNuevo extends ConsumerStatefulWidget {
 
 class _PantallaPerfilNuevoState extends ConsumerState<PantallaPerfilNuevo> {
   Ritmo? _ritmo;
+  Uint8List? _foto;
   String _ciudad = '';
   bool _mayorDeEdad = false;
 
   bool get _completo =>
-      _ritmo != null && _ciudad.trim().isNotEmpty && _mayorDeEdad;
+      _ritmo != null &&
+      _foto != null &&
+      _ciudad.trim().isNotEmpty &&
+      _mayorDeEdad;
+
+  Future<void> _elegirFoto() async {
+    final origen = await showModalBottomSheet<OrigenFoto>(
+      context: context,
+      builder: (context) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: const Icon(Icons.photo_library_outlined),
+              title: const Text('Elegir de la galería'),
+              onTap: () => Navigator.pop(context, OrigenFoto.galeria),
+            ),
+            ListTile(
+              leading: const Icon(Icons.photo_camera_outlined),
+              title: const Text('Tomar foto'),
+              onTap: () => Navigator.pop(context, OrigenFoto.camara),
+            ),
+          ],
+        ),
+      ),
+    );
+    if (origen == null) return;
+    final foto = await ref.read(selectorFotoProvider).elegir(origen);
+    if (foto != null && mounted) setState(() => _foto = foto);
+  }
 
   Future<void> _seguir() async {
     await ref
@@ -31,6 +64,7 @@ class _PantallaPerfilNuevoState extends ConsumerState<PantallaPerfilNuevo> {
         .guardar(
           Perfil(
             ritmoRodaje: _ritmo!,
+            foto: _foto!,
             ciudad: _ciudad.trim(),
             mayorDeEdad: _mayorDeEdad,
           ),
@@ -55,9 +89,22 @@ class _PantallaPerfilNuevoState extends ConsumerState<PantallaPerfilNuevo> {
               alCambiar: (ritmo) => setState(() => _ritmo = ritmo),
             ),
             const SizedBox(height: 24),
-            // Hueco de la foto: elegirla es otro ticket.
-            const Center(
-              child: CircleAvatar(radius: 40, child: Icon(Icons.person)),
+            Center(
+              child: Semantics(
+                button: true,
+                label: 'Elegir foto',
+                child: InkWell(
+                  onTap: _elegirFoto,
+                  customBorder: const CircleBorder(),
+                  child: CircleAvatar(
+                    radius: 40,
+                    backgroundImage: _foto == null ? null : MemoryImage(_foto!),
+                    child: _foto == null
+                        ? const Icon(Icons.add_a_photo_outlined)
+                        : null,
+                  ),
+                ),
+              ),
             ),
             const SizedBox(height: 24),
             TextField(

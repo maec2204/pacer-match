@@ -26,6 +26,10 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Pacer Match usa la cámara para tomar la foto de tu perfil.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Pacer Match usa tus fotos para elegir la foto de tu perfil.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
