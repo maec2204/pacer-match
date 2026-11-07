@@ -30,10 +30,7 @@ class _PantallaPerfilNuevoState extends ConsumerState<PantallaPerfilNuevo> {
   bool _fallo = false;
 
   bool get _completo =>
-      _ritmo != null &&
-      _foto != null &&
-      _ciudad.trim().isNotEmpty &&
-      _mayorDeEdad;
+      _ritmo != null && _foto != null && _ciudad.isNotEmpty && _mayorDeEdad;
 
   Future<void> _elegirFoto() async {
     final origen = await showModalBottomSheet<OrigenFoto>(
@@ -73,7 +70,7 @@ class _PantallaPerfilNuevoState extends ConsumerState<PantallaPerfilNuevo> {
             Perfil(
               ritmoRodaje: _ritmo!,
               foto: _foto!,
-              ciudad: _ciudad.trim(),
+              ciudad: _ciudad,
               mayorDeEdad: _mayorDeEdad,
             ),
           );

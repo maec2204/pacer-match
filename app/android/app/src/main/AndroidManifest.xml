@@ -1,4 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Foto del perfil: cámara (image_picker la pide al abrirla) y fotos del
+         teléfono. El README de image_picker no pide READ_EXTERNAL_STORAGE
+         para Android 12 o anterior, así que no se declara. -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
     <application
         android:label="Pacer Match"
         android:name="${applicationName}"
@@ -25,9 +30,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <!-- Recorte de la foto del perfil (image_cropper usa uCrop). La galería
-             y la cámara no piden permisos en el manifiesto: image_picker usa el
-             Photo Picker de Android y la app de cámara del sistema. -->
+        <!-- Recorte de la foto del perfil (image_cropper usa uCrop). Los
+             permisos de la galería y la cámara están arriba. -->
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"

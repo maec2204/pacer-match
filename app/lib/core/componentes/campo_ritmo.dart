@@ -65,7 +65,9 @@ class _CampoRitmoState extends State<CampoRitmo> {
     super.dispose();
   }
 
+  /// − / +: un cambio válido, así que también borra el aviso anterior.
   void _mover(int segundos) {
+    setState(() => _error = null);
     final actual = widget.valor;
     if (actual == null) return widget.alCambiar(CampoRitmo.inicial);
     widget.alCambiar(_dentroDelRango(actual.sumarSegundos(segundos)));
@@ -88,10 +90,9 @@ class _CampoRitmoState extends State<CampoRitmo> {
   }
 
   /// Revisa lo escrito: si sirve lo entrega; si no, avisa debajo y la cifra
-  /// vuelve a [CampoRitmo.valor]. Sin nada escrito, solo vuelve.
+  /// vuelve a [CampoRitmo.valor]. Sin nada escrito también avisa el formato.
   void _confirmar() {
     if (!_escribiendo) return;
-    if (_texto.text.isEmpty) return setState(() => _escribiendo = false);
     final ritmo = Ritmo.tryParse(_texto.text);
     final error = ritmo == null
         ? 'Escribe el ritmo como 4:05.3'
@@ -135,7 +136,10 @@ class _CampoRitmoState extends State<CampoRitmo> {
       children: [
         IconButton(
           icon: const Icon(Icons.remove, semanticLabel: 'Más rápido'),
-          onPressed: valor == CampoRitmo.minimo ? null : () => _mover(-1),
+          // Apagado en el mínimo o por debajo: nunca lleva a un ritmo más lento.
+          onPressed: valor != null && valor <= CampoRitmo.minimo
+              ? null
+              : () => _mover(-1),
         ),
         if (_escribiendo)
           IntrinsicWidth(
@@ -165,7 +169,10 @@ class _CampoRitmoState extends State<CampoRitmo> {
         const ExcludeSemantics(child: Text('/km')),
         IconButton(
           icon: const Icon(Icons.add, semanticLabel: 'Más lento'),
-          onPressed: valor == CampoRitmo.maximo ? null : () => _mover(1),
+          // Apagado en el máximo o por encima: nunca lleva a un ritmo más rápido.
+          onPressed: valor != null && valor >= CampoRitmo.maximo
+              ? null
+              : () => _mover(1),
         ),
       ],
     );

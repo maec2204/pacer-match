@@ -110,6 +110,22 @@ void main() {
     expect(activo(tester, Icons.remove), isTrue);
   });
 
+  testWidgets('con 2:00.0 (más rápido que el mínimo), − está apagado y + '
+      'entrega 2:30.0', (tester) async {
+    final entregados = await montar(tester, Ritmo.parse('2:00.0'));
+    expect(activo(tester, Icons.remove), isFalse);
+    await tester.tap(find.byIcon(Icons.add));
+    expect(entregados, [Ritmo.parse('2:30.0')]);
+  });
+
+  testWidgets('con 11:00.0 (más lento que el máximo), + está apagado y − '
+      'entrega 10:00.0', (tester) async {
+    final entregados = await montar(tester, Ritmo.parse('11:00.0'));
+    expect(activo(tester, Icons.add), isFalse);
+    await tester.tap(find.byIcon(Icons.remove));
+    expect(entregados, [Ritmo.parse('10:00.0')]);
+  });
+
   testWidgets('en 2:30.5, − y + están activos', (tester) async {
     await montar(tester, Ritmo.parse('2:30.5'));
     expect(activo(tester, Icons.remove), isTrue);
@@ -148,6 +164,20 @@ void main() {
     });
   }
 
+  testWidgets('tras un valor rechazado, tocar + borra el mensaje', (
+    tester,
+  ) async {
+    await montar(tester, Ritmo.parse('5:00.0'));
+    await escribir(tester, '5:00.0', '4653');
+    await confirmar(tester);
+    expect(find.text('Escribe el ritmo como 4:05.3'), findsOneWidget);
+
+    await tester.tap(find.byIcon(Icons.add));
+    await tester.pump();
+    expect(find.text('5:01.0'), findsOneWidget);
+    expect(find.text('Escribe el ritmo como 4:05.3'), findsNothing);
+  });
+
   testWidgets('mientras se escribe no aparece ningún mensaje', (tester) async {
     await montar(tester, Ritmo.parse('5:00.0'));
     await escribir(tester, '5:00.0', '4653');
@@ -173,14 +203,13 @@ void main() {
     expect(find.text('12:30.0'), findsOneWidget);
   });
 
-  testWidgets('confirmar sin escribir nada deja el valor y no avisa', (
-    tester,
-  ) async {
+  testWidgets('confirmar sin escribir nada avisa el formato, vuelve al valor '
+      'anterior y no entrega nada', (tester) async {
     final entregados = await montar(tester, Ritmo.parse('5:00.0'));
     await escribir(tester, '5:00.0', '');
     await confirmar(tester);
+    expect(find.text('Escribe el ritmo como 4:05.3'), findsOneWidget);
     expect(find.text('5:00.0'), findsOneWidget);
-    expect(find.text('Escribe el ritmo como 4:05.3'), findsNothing);
     expect(entregados, isEmpty);
   });
 

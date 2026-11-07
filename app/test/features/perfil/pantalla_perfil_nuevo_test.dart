@@ -172,6 +172,23 @@ void main() {
     expect(ciudad.controller.text, isEmpty);
   });
 
+  testWidgets('la ciudad se guarda tal como se escribió y con solo espacios '
+      'ya activa "Seguir"', (tester) async {
+    final repositorio = RepositorioPerfilEnMemoria();
+    await abrirPerfilNuevo(tester, repositorio);
+    await _llenarFormulario(tester);
+
+    await tester.enterText(find.byType(TextField), '  ');
+    await tester.pump();
+    expect(seguirActivo(tester), isTrue);
+
+    await tester.enterText(find.byType(TextField), ' Caracas ');
+    await tester.pump();
+    await tester.tap(_seguir);
+    await tester.pumpAndSettle();
+    expect(repositorio.guardado!.ciudad, ' Caracas ');
+  });
+
   testWidgets('"Seguir" se apaga si falta la foto, el ritmo, la ciudad o la '
       'casilla', (tester) async {
     final selector = SelectorFotoFalso(fotoDePrueba);

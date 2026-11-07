@@ -14,8 +14,8 @@ abstract interface class SelectorFoto {
 }
 
 /// Usa la galería o la cámara del teléfono (image_picker) y el recorte
-/// nativo (image_cropper). En Android no se declaran permisos (ver
-/// AndroidManifest.xml); los de iOS están en Info.plist.
+/// nativo (image_cropper). Los permisos de cámara y fotos están en
+/// AndroidManifest.xml (CAMERA, READ_MEDIA_IMAGES) e Info.plist.
 class SelectorFotoDispositivo implements SelectorFoto {
   @override
   Future<Uint8List?> elegir(OrigenFoto origen) async {
